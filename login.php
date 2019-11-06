@@ -41,10 +41,34 @@
       <li><a href="#">Register</a></li>
     </ul>
 
-    <div class="welcome center-align">
-      <h1>Welcome to KCTF</h1>
-      <h3>CTF organized by KPopers barbar</h3>
+    <div class="container">
+        <div class="row">
+            <form class="col s6 offset-s3 form-pad-top" method="POST">
+                <div class="card-panel">
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="username" name="username" type="text" class="validate">
+                            <label for="username">Username</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password" name="password" type="password" class="validate">
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12 offset-s8">
+                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                                <i class="material-icons right">send</i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
     </div>
+
     <script>
         $(document).ready(function(){
             $('.sidenav').sidenav();
