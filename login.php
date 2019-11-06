@@ -43,7 +43,7 @@
 
     <div class="container">
         <div class="row">
-            <form class="col s6 offset-s3 form-pad-top" method="POST">
+            <form class="col s6 offset-s3 form-pad-top" method="POST" action="login_process.php">
                 <div class="card-panel">
                     <div class="row">
                         <div class="input-field col s12">
