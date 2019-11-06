@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper teal">
+            <a href="#" class="brand-logo center">Logo</a>
+            <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="#">Register</a></li>
+              <li><a href="#">Login</a></li>
+            </ul>
+            <ul class="left hide-on-med-and-down">
+              <li><a href="#">Notifications</a></li>
+              <li><a href="#">Users</a></li>
+              <li><a href="#">Scoreboard</a></li>
+              <li><a href="#">Challenges</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="welcome center-align">
+        <h1>Welcome to KCTF</h1>
+        <h3>A CTF organized by KPopers barbar</h3>       
+    </div>
+
+    <ul class="sidenav" id="mobile">
+      <li><a href="#">Sass</a></li>
+      <li><a href="#">Components</a></li>
+      <li><a href="#">Javascript</a></li>
+      <li><a href="#">Mobile</a></li>
+    </ul>
+    <script>
+        $(document).ready(function(){
+            $('.sidenav').sidenav();
+        });
+    </script>
+</body>
+</html>

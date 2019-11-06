@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.welcome{
+    margin-top: 10%;
+}
+
+html{
+    background-color: #f5f6fa;
+    background: url("img.jpg");
+    background-size: 100vw 100vh;
+    color: #FEE;
+}
+
+#mobile{
+    background-color: #f5f6fa;
+}
