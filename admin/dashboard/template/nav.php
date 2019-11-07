@@ -36,15 +36,15 @@
     <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-        <a href="index.php">Dashboard</a>
+        <a href="./">Dashboard</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-        <a href="index.html">Dsh.</a>
+        <a href="./">Dsh.</a>
         </div>
         <ul class="sidebar-menu">
         <li class="dropdown active">
         <li>
-            <a class="nav-link" href="#"><i class="fas fa-users"></i> <span>Users</span></a></li>
+            <a class="nav-link" href="users.php"><i class="fas fa-users"></i> <span>Users</span></a></li>
         </li>
         <li>
             <a class="nav-link" href="#"><i class="fas fa-fire"></i> <span>Challenge</span></a></li>
