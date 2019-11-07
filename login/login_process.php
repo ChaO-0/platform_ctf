@@ -3,7 +3,7 @@
     //Kalo udah bisa login, passwordnya di hash + dikasi escape string
     //Masih ada error entah kenapa anjg
     session_start();
-    require_once('connection.php');
+    require_once('../template/connection.php');
 
     $username = $_POST['username'];
     $password = $_POST['password'];

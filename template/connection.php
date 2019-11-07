@@ -2,7 +2,7 @@
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $db = "db_ctf";
+    $db = "platform_ctf";
 
     // Create connection
     $conn = new mysqli($servername, $username, $password, $db);
