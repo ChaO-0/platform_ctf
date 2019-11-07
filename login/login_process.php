@@ -1,23 +1,20 @@
 <?php
-    //Untuk testing doang
-    //Kalo udah bisa login, passwordnya di hash + dikasi escape string
-    //Masih ada error entah kenapa anjg
     session_start();
     require_once('../template/connection.php');
 
     $username = $_POST['username'];
     $password = $_POST['password'];
     
-    $sql = "SELECT id FROM platform_ctf";
+    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
 
     $result = $conn->query($sql);
-    echo $result->num_rows;
-    var_dump($result);
-    while($row = $result->fetch_assoc()){
-            echo $row['id'];
-            echo $row['username'];
-            echo $row['password'];
-            echo $row['email'];
-            echo $row['affiliation'];
+    $id = $result->fetch_assoc()['id_user'];
+
+    if($result->num_rows == 1){
+        $_SESSION['id'] = $id;
+        header("location:../challenges");
+    }else{
+        $_SESSION['error'] = 'Wrong username or password';
+        header("location:index.php");
     }
 ?> 

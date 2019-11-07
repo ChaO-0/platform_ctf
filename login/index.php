@@ -15,22 +15,31 @@
 </head>
 <body>  
     <?php
-        include '../template/nav.php';
+        require_once '../template/nav.php';
     ?>
 
     <div class="container">
         <div class="row">
             <form class="col s6 offset-s3 form-pad-top" method="POST" action="login_process.php">
                 <div class="card-panel">
+                    <div class="red-text center-align">
+                        <?php
+                            if(isset($_SESSION['error'])){
+                                $error = $_SESSION['error'];
+                                echo "<h5>$error</h5>";
+                                session_destroy();
+                            }
+                        ?>
+                    </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="username" name="username" type="text" class="validate">
+                            <input id="username" name="username" type="text" class="validate" required>
                             <label for="username">Username</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" name="password" type="password" class="validate">
+                            <input id="password" name="password" type="password" class="validate" required>
                             <label for="password">Password</label>
                         </div>
                     </div>
