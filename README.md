@@ -1,5 +1,6 @@
 # platform_ctf 
-Download https://github.com/stisla/stisla <br>
-Copy dan paste assets/ & sources/ pada folder stilla ke admin/ <br>
+
+1. Download [Stisla](https://github.com/stisla/stisla) <br>
+2. Copy dan paste [assets/](https://github.com/stisla/stisla/tree/master/assets) & [sources/](https://github.com/stisla/stisla/tree/master/sources) pada folder **stisla** ke [admin/](admin/) <br>
 
 THANK YOU
