@@ -1,3 +1,10 @@
+<?php
+    $home='./';
+    $user='users.php';
+    $chall='challenge.php';
+    $notif='notification.php';
+?>
+
 <nav class="navbar navbar-expand-lg main-navbar">
         <form class="form-inline mr-auto">
         <ul class="navbar-nav mr-3">
@@ -36,21 +43,21 @@
     <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-        <a href="./">Dashboard</a>
+        <a href="<?php echo $home; ?>">Dashboard</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-        <a href="./">Dsh.</a>
+        <a href="<?php echo $home; ?>">Dsh.</a>
         </div>
         <ul class="sidebar-menu">
         <li class="dropdown active">
         <li>
-            <a class="nav-link" href="users.php"><i class="fas fa-users"></i> <span>Users</span></a></li>
+            <a class="nav-link" href="<?php echo $user; ?>"><i class="fas fa-users"></i> <span>Users</span></a>
         </li>
         <li>
-            <a class="nav-link" href="#"><i class="fas fa-fire"></i> <span>Challenge</span></a></li>
+            <a class="nav-link" href="<?php echo $chall; ?>"><i class="fas fa-fire"></i> <span>Challenge</span></a>
         </li>
         <li>
-            <a class="nav-link" href="#"><i class="far fa-bell"></i> <span>Notification</span></a></li>
+            <a class="nav-link" href="<?php echo $notif; ?>"><i class="far fa-bell"></i> <span>Notification</span></a>
         </li>
         </ul>
     </div>
