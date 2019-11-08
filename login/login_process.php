@@ -3,7 +3,7 @@
     require_once('../template/connection.php');
 
     $username = $conn->real_escape_string($_POST['username']);
-    $password = $conn->real_escape_string($_POST['password']);
+    $password = md5($conn->real_escape_string($_POST['password']));
     
     $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
 

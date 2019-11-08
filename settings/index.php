@@ -31,7 +31,7 @@
     ?>
     <div class="container">
         <div class="row">
-            <form class="col s6 offset-s3 form-pad-top" method="POST" action="#">
+            <form class="col s6 offset-s3 form-pad-top" method="POST" action="update.php">
                 <div class="card-panel">
                     <div class="row">
                         <div class="input-field col s12">
@@ -41,14 +41,14 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" name="password" type="password" class="validate">
-                            <label for="password">Current Password</label>
+                            <input id="confirm_password" name="confirm_password" type="password" class="validate">
+                            <label for="confirm_password">Current Password</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="password" name="password" type="password" class="validate">
-                            <label for="password">New Password</label>
+                            <input id="new_password" name="new_password" type="password" class="validate">
+                            <label for="new_password">New Password</label>
                         </div>
                     </div>
                     <div class="row">

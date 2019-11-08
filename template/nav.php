@@ -1,6 +1,6 @@
 <nav>
         <div class="nav-wrapper teal">
-            <a href="index.html" class="brand-logo center">KCTF</a>
+            <a href="/platform_ctf" class="brand-logo center">KCTF</a>
             <a href="#" data-target="mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
             <ul class="right hide-on-med-and-down">
                 <?php
@@ -19,7 +19,7 @@
                 <li><a href="#">Admin</a></li>
                     <?php } ?>
                 <li><a href="#">Profile</a></li>
-                <li><a href="../settings">Settings</a></li>
+                <li><a href="/platform_ctf/settings">Settings</a></li>
                 <li><a href="../logout">Logout</a></li>
                 <?php
                     } 
