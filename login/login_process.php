@@ -2,8 +2,8 @@
     session_start();
     require_once('../template/connection.php');
 
-    $username = $_POST['username'];
-    $password = $_POST['password'];
+    $username = $conn->real_escape_string($_POST['username']);
+    $password = $conn->real_escape_string($_POST['password']);
     
     $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
 

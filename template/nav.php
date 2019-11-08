@@ -19,7 +19,7 @@
                 <li><a href="#">Admin</a></li>
                     <?php } ?>
                 <li><a href="#">Profile</a></li>
-                <li><a href="#">Settings</a></li>
+                <li><a href="../settings">Settings</a></li>
                 <li><a href="../logout">Logout</a></li>
                 <?php
                     } 
