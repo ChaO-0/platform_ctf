@@ -14,7 +14,7 @@
                 ?>
                 <?php
                     $role = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
-                    if($role){
+                    if($role === '1'){
                 ?>
                 <li><a href="#">Admin</a></li>
                     <?php } ?>
