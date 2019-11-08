@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 07, 2019 at 03:37 PM
+-- Generation Time: Nov 08, 2019 at 04:07 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.11
 
@@ -53,14 +53,20 @@ INSERT INTO `category` (`id_category`, `category`) VALUES
 CREATE TABLE `challenges` (
   `id_chall` int(11) NOT NULL,
   `title` varchar(50) NOT NULL,
-  `description` text NOT NULL,
+  `descript` text NOT NULL,
   `id_category` int(11) NOT NULL,
   `flag` varchar(50) NOT NULL,
   `poin` int(11) NOT NULL,
-  `id_file` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL,
+  `id_file` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `challenges`
+--
+
+INSERT INTO `challenges` (`id_chall`, `title`, `descript`, `id_category`, `flag`, `poin`, `id_file`, `status`) VALUES
+(1, 'Caesar 7', '<p><i>wlyahth-ahth zhfh thb tlunbjhwrhu alypthrhzpo rhyluh alsho ilythpu whkh \r\nwshamvyt rhtp pup mhsn buabr rhsphu, nbuhrhu klunhu mvytha mshn \r\nzlshtha_k4ahun_ws4f3y</i></p>', 3, 'KCTF{selamat_d4tang_pl4y3r}', 100, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -86,20 +92,6 @@ CREATE TABLE `notification` (
   `id_notif` int(11) NOT NULL,
   `title` int(11) NOT NULL,
   `description` int(11) NOT NULL,
-  `status` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `solves`
---
-
-CREATE TABLE `solves` (
-  `id_solve` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
-  `id_chall` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -157,14 +149,6 @@ ALTER TABLE `notification`
   ADD PRIMARY KEY (`id_notif`);
 
 --
--- Indexes for table `solves`
---
-ALTER TABLE `solves`
-  ADD PRIMARY KEY (`id_solve`),
-  ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_question` (`id_chall`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -181,6 +165,12 @@ ALTER TABLE `category`
   MODIFY `id_category` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
+-- AUTO_INCREMENT for table `challenges`
+--
+ALTER TABLE `challenges`
+  MODIFY `id_chall` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
@@ -191,12 +181,6 @@ ALTER TABLE `files`
 --
 ALTER TABLE `notification`
   MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `solves`
---
-ALTER TABLE `solves`
-  MODIFY `id_solve` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
@@ -214,13 +198,6 @@ ALTER TABLE `users`
 ALTER TABLE `challenges`
   ADD CONSTRAINT `challenges_ibfk_1` FOREIGN KEY (`id_file`) REFERENCES `files` (`id_file`),
   ADD CONSTRAINT `challenges_ibfk_2` FOREIGN KEY (`id_category`) REFERENCES `category` (`id_category`);
-
---
--- Constraints for table `solves`
---
-ALTER TABLE `solves`
-  ADD CONSTRAINT `solves_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`),
-  ADD CONSTRAINT `solves_ibfk_2` FOREIGN KEY (`id_chall`) REFERENCES `challenges` (`id_chall`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
