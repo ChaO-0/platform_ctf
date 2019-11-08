@@ -12,10 +12,18 @@
                 <?php } 
                     else{
                 ?>
+                <?php
+                    $role = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
+                    if($role){
+                ?>
+                <li><a href="#">Admin</a></li>
+                    <?php } ?>
                 <li><a href="#">Profile</a></li>
                 <li><a href="#">Settings</a></li>
                 <li><a href="../logout">Logout</a></li>
-                <?php } ?>
+                <?php
+                    } 
+                ?>
             </ul>
             <ul class="left hide-on-med-and-down">
                 <li><a href="#">Notifications</a></li>
