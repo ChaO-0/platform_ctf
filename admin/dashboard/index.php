@@ -18,6 +18,7 @@
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
+
 <!-- Start GA -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-94034622-3"></script>
 <script>
@@ -34,6 +35,10 @@
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
       <?php
+        $home='./';
+        $user='users.php';
+        $chall='challenge/';
+        $notif='notification.php';
         include 'template/nav.php';
       ?>
       

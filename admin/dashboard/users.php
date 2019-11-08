@@ -30,6 +30,10 @@
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
         <?php
+          $home='./';
+          $user='users.php';
+          $chall='challenge/';
+          $notif='notification.php';
           include 'template/nav.php';
         ?>
 
@@ -47,7 +51,7 @@
               $read_users="SELECT * from users";
               $view = $conn -> query($read_users);
               $no = 1;
-                  ?>
+            ?>
           <div class="table-responsive">
                       <table class="table table-sm">
                         <thead>
