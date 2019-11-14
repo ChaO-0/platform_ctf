@@ -1518,7 +1518,7 @@ h6 .badge {
   left: 0;
   width: 100%;
   height: 115px;
-  background-color: #009688;
+  background-color: #6777ef;
   z-index: -1; }
 
 .navbar {
@@ -1601,7 +1601,7 @@ h6 .badge {
         display: flex;
         align-items: center; }
         .navbar .form-inline .search-result .search-item a:hover {
-          background-color: #a0a0a0; }
+          background-color: #fbfbff; }
         .navbar .form-inline .search-result .search-item a:not(.search-close) {
           width: 100%; }
         .navbar .form-inline .search-result .search-item a i {
@@ -2404,7 +2404,7 @@ body.sidebar-mini .main-sidebar {
       body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li > a:focus,
       body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li.active > a,
       body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li.active > a:hover {
-        color: rgb(0, 0, 0);
+        color: #fff;
         background-color: #6777ef !important; }
       body.sidebar-mini .main-sidebar .sidebar-menu > li ul.dropdown-menu li a {
         height: 40px;
@@ -2635,7 +2635,7 @@ body.layout-3 .main-footer {
         margin-top: 3px;
         width: 100%; }
       .main-sidebar .sidebar-menu li a:hover {
-        background-color: #dadada; }
+        background-color: #fcfcfd; }
     .main-sidebar .sidebar-menu li.active a {
       color: #6777ef;
       font-weight: 600;
