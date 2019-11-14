@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Challenge List &mdash; Stisla</title>
+  <title>Challenge List &mdash; Admin</title>
 
   <?php
     $pre="../";
@@ -34,7 +34,7 @@
           <div class="section-body">
             <?php
                 include '../template/root.php';
-                $read_chall="SELECT challenges.title,challenges.descript, category.category, challenges.flag,challenges.hint, challenges.poin 
+                $read_chall="SELECT challenges.id_chall ,challenges.title,challenges.descript,category.id_category, category.category, challenges.flag,challenges.hint, challenges.poin 
                               FROM `challenges` 
                               INNER JOIN category ON challenges.id_category =category.id_category ";
                 $view = $conn -> query($read_chall);
@@ -76,7 +76,7 @@
                             <td><?php echo $view_chall['hint'];?></td>
                             <td><?php echo $view_chall['poin'];?></td>
                             <td>
-                            <a href="#" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Edit</a>
+                            <a href="<?php echo 'edit.php?id='.$view_chall['id_chall'].'&&id_cate='.$view_chall['id_category']; ?>" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Edit</a>
                             </td>
                           </tr>
                         <?php }?>

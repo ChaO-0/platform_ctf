@@ -34,7 +34,11 @@
             <div class="section-body">
                 <?php
                     include '../template/root.php';
+                    $id= $_GET['id'];
+                    $id_cate= $_GET['id_cate'];
                     $cate="SELECT * FROM category";
+                    $chall="SELECT * FROM challenges where id_chall = $id";
+                    $view_c=$conn->query($chall);
                     $view=$conn->query($cate);
                 ?>
                 <h2 class="section-title">Add Challenge</h2>
@@ -45,11 +49,14 @@
                                 <h4>Add Challenge</h4>
                             </div>
                             <div class="card-body">
-                                <form action="proses.php" method="post">
-                                    <div class="form-group row mb-4">
+                                <form action="proses_edit.php" method="post">
+                                    <?php 
+                                        while($view_chall=$view_c->fetch_array(MYSQLI_ASSOC)){ 
+                                    ?>
+                                        <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="title">
+                                            <input value="<?php echo $view_chall['title'];?>" type="text" class="form-control" name="title">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
@@ -58,8 +65,12 @@
                                             <select class="form-control selectric" name="category">
                                                 <?php
                                                     while($view_cate=$view->fetch_array(MYSQLI_ASSOC)){
+                                                        if($view_cate['id_category']==$id_cate){
                                                 ?>
-                                                    <option value="<?php echo $view_cate['id_category'];?>"><?php echo $view_cate['category'];?></option>
+                                                    <option selected value="<?php echo $view_cate['id_category'];?>" ><?php echo $view_cate['category'];?></option>
+                                                    <?php } else {?>
+                                                        <option  value="<?php echo $view_cate['id_category'];?>"><?php echo $view_cate['category'];?></option>
+                                                    <?php } ?>
                                                 <?php }?>
                                             </select>
                                         </div>
@@ -67,25 +78,25 @@
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Description</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <textarea class="summernote-simple" name="desc"></textarea>
+                                            <textarea class="summernote-simple" name="desc"><?php echo $view_chall['descript'];?></textarea>
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Flag</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="flag">
+                                            <input value="<?php echo $view_chall['flag'];?>" type="text" class="form-control" name="flag">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Hint</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="hint">
+                                            <input value="<?php echo $view_chall['hint'];?>" type="text" class="form-control" name="hint">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Poin</label>
                                         <div class="col-sm-12 col-md-7">
-                                            <input type="number" class="form-control" name="poin">
+                                            <input value="<?php echo $view_chall['poin'];?>"type="number" class="form-control" name="poin">
                                         </div>
                                     </div>
                                     <div class="form-group row mb-4">
@@ -94,6 +105,7 @@
                                             <button class="btn btn-primary">Add</button>
                                         </div>
                                     </div>
+                                    <?php } ?>
                                 </form>
                             </div>
                         </div>
