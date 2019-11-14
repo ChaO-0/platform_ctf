@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 08, 2019 at 04:07 AM
+-- Generation Time: Nov 14, 2019 at 01:46 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.11
 
@@ -56,6 +56,7 @@ CREATE TABLE `challenges` (
   `descript` text NOT NULL,
   `id_category` int(11) NOT NULL,
   `flag` varchar(50) NOT NULL,
+  `hint` varchar(50) NOT NULL,
   `poin` int(11) NOT NULL,
   `id_file` int(11) DEFAULT NULL,
   `status` int(11) NOT NULL
@@ -65,8 +66,9 @@ CREATE TABLE `challenges` (
 -- Dumping data for table `challenges`
 --
 
-INSERT INTO `challenges` (`id_chall`, `title`, `descript`, `id_category`, `flag`, `poin`, `id_file`, `status`) VALUES
-(1, 'Caesar 7', '<p><i>wlyahth-ahth zhfh thb tlunbjhwrhu alypthrhzpo rhyluh alsho ilythpu whkh \r\nwshamvyt rhtp pup mhsn buabr rhsphu, nbuhrhu klunhu mvytha mshn \r\nzlshtha_k4ahun_ws4f3y</i></p>', 3, 'KCTF{selamat_d4tang_pl4y3r}', 100, NULL, 1);
+INSERT INTO `challenges` (`id_chall`, `title`, `descript`, `id_category`, `flag`, `hint`, `poin`, `id_file`, `status`) VALUES
+(1, 'cipher 7', 'Zlshtha khahun pup mshn RJAM{zlshtha_k4ahun_ws4f3y}', 3, 'KCTF{selamat_d4tang_pl4y3r}', 'online tool mungkin berguna', 100, NULL, 1),
+(2, 'free flag', '<p>KCTF{ini_free_flag}<br></p>', 5, 'KCTF{ini_free_flag}', 'gak ada', 50, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -116,7 +118,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `username`, `password`, `email`, `affiliation`, `role`, `status`) VALUES
-(1, 'GrizzlyMg', 'password', 'fajar@gmail.com', 'japan', 1, 1);
+(1, 'GrizzlyMg', '5f4dcc3b5aa765d61d8327deb882cf99', 'fajar@gmail.com', 'japan', 1, 1);
 
 --
 -- Indexes for dumped tables
@@ -132,9 +134,7 @@ ALTER TABLE `category`
 -- Indexes for table `challenges`
 --
 ALTER TABLE `challenges`
-  ADD PRIMARY KEY (`id_chall`),
-  ADD KEY `id_file` (`id_file`),
-  ADD KEY `id_category` (`id_category`);
+  ADD PRIMARY KEY (`id_chall`);
 
 --
 -- Indexes for table `files`
@@ -168,7 +168,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `challenges`
 --
 ALTER TABLE `challenges`
-  MODIFY `id_chall` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_chall` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `files`
@@ -187,17 +187,6 @@ ALTER TABLE `notification`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `challenges`
---
-ALTER TABLE `challenges`
-  ADD CONSTRAINT `challenges_ibfk_1` FOREIGN KEY (`id_file`) REFERENCES `files` (`id_file`),
-  ADD CONSTRAINT `challenges_ibfk_2` FOREIGN KEY (`id_category`) REFERENCES `category` (`id_category`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
