@@ -16,8 +16,10 @@
 <body>
     <?php
         require_once("../template/nav.php");
-        return isset($_SESSION['id']) ? '' : header('location:../login');
-        die();
+        if(empty($_SESSION['id'])){
+            header('location:/platform_ctf/login');
+            die();
+        }
     ?>
     <script>
         $(document).ready(function(){
