@@ -1,6 +1,6 @@
 <?php
     require_once 'connection.php';
-    require_once 'session_check.php';
+    session_start();
     $id = $_SESSION['id'];
     $sql = "SELECT username FROM users WHERE id_user='$id'";
     $result = $conn->query($sql);
