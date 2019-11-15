@@ -8,7 +8,7 @@
     <script src="<?php echo $pre; ?>assets/js/stisla.js"></script>
     
     <!-- JS Libraies -->
-    <script src="<?php echo $pre; ?>assets/modules/summernote/summernote-bs4.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote-bs4.js"></script>
     <script src="<?php echo $pre; ?>assets/modules/codemirror/lib/codemirror.js"></script>
     <script src="<?php echo $pre; ?>assets/modules/codemirror/mode/javascript/javascript.js"></script>
     <script src="<?php echo $pre; ?>assets/modules/jquery-selectric/jquery.selectric.min.js"></script>
