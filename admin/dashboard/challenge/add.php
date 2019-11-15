@@ -16,7 +16,7 @@
         <div class="main-wrapper main-wrapper-1">
             <?php
             $home='../';
-            $user='../users.php';
+            $user='../users/';
             $chall='./';
             $notif='../notification/';
             include '../template/nav.php';

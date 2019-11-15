@@ -1,5 +1,5 @@
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="<?php echo $pre;?>assets/modules/fontawesome/css/all.min.css">
+    <script src="https://kit.fontawesome.com/aa20a04d3f.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<?php echo $pre;?>assets/modules/bootstrap/css/bootstrap.min.css">
 
     <!-- CSS Libraries -->

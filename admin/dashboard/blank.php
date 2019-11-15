@@ -6,6 +6,7 @@
   <title>Blank Page &mdash; Stisla</title>
     
     <?php
+    $pre="";
       include 'template/css.php';
     ?>
 
@@ -15,7 +16,7 @@
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
         <?php
-        $pre=" ";
+        $pre="";
           include 'template/nav.php'
         ?>
 
@@ -43,6 +44,7 @@
   </div>
 
   <?php
+  $pre = "";
     include 'template/js.php';
   ?>
 </body>
