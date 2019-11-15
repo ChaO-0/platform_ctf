@@ -16,11 +16,11 @@
                     $role = isset($_SESSION['role']) ? $_SESSION['role'] : 0;
                     if($role === '1'){
                 ?>
-                <li><a href="#">Admin</a></li>
+                <li><a href="/platform_ctf/admin/dashboard">Admin</a></li>
                     <?php } ?>
                 <li><a href="#">Profile</a></li>
                 <li><a href="/platform_ctf/settings">Settings</a></li>
-                <li><a href="../logout">Logout</a></li>
+                <li><a href="/platform_ctf/logout">Logout</a></li>
                 <?php
                     } 
                 ?>
@@ -29,7 +29,7 @@
                 <li><a href="#">Notifications</a></li>
                 <li><a href="#">Users</a></li>
                 <li><a href="#">Scoreboard</a></li>
-                <li><a href="../challenges">Challenges</a></li>
+                <li><a href="/platform_ctf/challenges">Challenges</a></li>
             </ul>
         </div>
     </nav>

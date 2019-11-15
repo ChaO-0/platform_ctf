@@ -7,7 +7,7 @@
 
   <?php
     $pre=" ";
-    include 'template/css.php';
+    require_once 'template/css.php';
   ?>
 
 
@@ -20,6 +20,7 @@
         $chall='challenge/';
         $notif='notification/';
         include 'template/nav.php';
+        // return isset($_SESSION['id']) ? '' : header('location:/platform_ctf/login');
       ?>
       
   <!-- TEST -->
