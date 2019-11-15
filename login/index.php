@@ -26,7 +26,7 @@
                         <?php
                             if(isset($_SESSION['error'])){
                                 $error = $_SESSION['error'];
-                                echo "<h5>$error</h5>";
+                                echo "<script>M.toast({html: '$error', displayLength: 1500, classes: 'rounded'})</script>";
                                 session_destroy();
                             }
                         ?>

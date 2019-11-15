@@ -5,7 +5,7 @@
     $username = $conn->real_escape_string($_POST['username']);
     $password = md5($conn->real_escape_string($_POST['password']));
     
-    $sql = "SELECT * FROM users WHERE username='$username' AND password='$password'";
+    $sql = "SELECT * FROM users WHERE BINARY username='$username' AND password='$password'";
 
     $result = $conn->query($sql);
     
