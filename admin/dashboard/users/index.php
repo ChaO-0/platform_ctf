@@ -18,6 +18,7 @@
           $user='./';
           $chall='../challenge/';
           $notif='../notification/';
+          $logout='../';
           include '../template/nav.php';
         ?>
 

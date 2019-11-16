@@ -19,6 +19,7 @@
             $user='../users/';
             $chall='./';
             $notif='../notification/';
+            $logout='../';
             include '../template/nav.php';
             
             ?>

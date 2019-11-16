@@ -19,6 +19,7 @@
           $user='../users/';
           $chall='./';
           $notif='../notification/';
+          $logout='../';
           include '../template/nav.php';
           
         ?>
@@ -40,13 +41,16 @@
                 $view = $conn -> query($read_chall);
                 $no = 1;
               ?>
-
+              </div>
               <div class="card">
                 <div class="card-header">
+                
                   <a class="btn btn-icon icon-left btn-info" href="add.php">
                     <i class="fas fa-plus"></i>
                     Add Challenge
                   </a>
+
+                  
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">
@@ -76,7 +80,9 @@
                             <td><?php echo $view_chall['hint'];?></td>
                             <td><?php echo $view_chall['poin'];?></td>
                             <td>
-                            <a href="<?php echo 'edit.php?id='.$view_chall['id_chall'].'&&id_cate='.$view_chall['id_category']; ?>" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Edit</a>
+                            <a href="<?php echo 'edit.php?id='.$view_chall['id_chall'].'&&id_cate='.$view_chall['id_category']; ?>" class="btn btn-icon icon-left btn-primary btn_chall"><i class="far fa-edit"></i> Edit</a>
+                            
+                            <a href="<?php echo 'delete.php?id='.$view_chall['id_chall']; ?>" class="btn btn-icon icon-left btn-danger btn_chall"><i class="fas fa-trash-alt"></i> Delete</a>
                             </td>
                           </tr>
                         <?php }?>
@@ -103,7 +109,19 @@
 
   <?php
     include '../template/js.php';
-  ?>
 
+    if(isset($_SESSION['success'])){
+      $success = $_SESSION['success'];
+    ?>
+    <script>
+      
+      alert("<?php echo $success;?> ");
+      
+    </script>
+    <?php  
+      unset($_SESSION['success']);
+    } ?>
+
+  
 </body>
 </html>

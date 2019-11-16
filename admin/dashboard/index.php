@@ -19,6 +19,7 @@
         $user='users/';
         $chall='challenge/';
         $notif='notification/';
+        $logout='';
         include 'template/nav.php';
         // return isset($_SESSION['id']) ? '' : header('location:/platform_ctf/login');
       ?>

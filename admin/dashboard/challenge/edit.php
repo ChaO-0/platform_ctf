@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Add Challenge &mdash; Admin</title>
+    <title>Edit Challenge &mdash; Admin</title>
 
     <?php
     $pre="../";
@@ -19,6 +19,7 @@
             $user='../users.php';
             $chall='./';
             $notif='../notification/';
+            $logout='../';
             include '../template/nav.php';
             
             ?>
@@ -41,12 +42,12 @@
                     $view_c=$conn->query($chall);
                     $view=$conn->query($cate);
                 ?>
-                <h2 class="section-title">Add Challenge</h2>
+                <h2 class="section-title">Edit Challenge</h2>
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4>Add Challenge</h4>
+                                <h4>Edit Challenge</h4>
                             </div>
                             <div class="card-body">
                                 <form action="proses_edit.php" method="post">
@@ -56,6 +57,8 @@
                                         <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
                                         <div class="col-sm-12 col-md-7">
+                                            <input type="hidden" name="id_chall" value="<?php echo $id?>">
+                                            
                                             <input value="<?php echo $view_chall['title'];?>" type="text" class="form-control" name="title">
                                         </div>
                                     </div>
@@ -102,7 +105,7 @@
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                         <div class="col-sm-12 col-md-7">
-                                            <button class="btn btn-primary">Add</button>
+                                            <button class="btn btn-primary">Edit</button>
                                         </div>
                                     </div>
                                     <?php } ?>

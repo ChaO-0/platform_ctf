@@ -16,4 +16,8 @@
     .main-sidebar .sidebar-menu li a:hover{
         background-color: #52b8c363 !important;
     }
+    .btn_chall{
+        margin-bottom: 5px;
+        margin-top:  5px;
+    }
 /*# sourceMappingURL=custom.css.map */
