@@ -14,13 +14,17 @@
     <title>Welcome to KCTF</title>
 </head>
 <body>
-    <?php
-      include 'template/nav.php'
-    ?>
 
-    <div class="welcome center-align">
-      <h1>Welcome to KCTF</h1>
-      <h3>CTF organized by KPopers barbar</h3>
+
+    <div class="welcome">
+      <?php
+        include 'template/nav.php'
+      ?>
+      <div class="greet center-align">
+        <h1>Welcome to KCTF</h1>
+        <h3>CTF organized by KPopers barbar</h3>
+      </div>
+      
     </div>
     <script>
         $(document).ready(function(){
