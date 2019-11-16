@@ -8,7 +8,7 @@ html, body{
     width: 100%;
     height: 100%;
     background-color:#e3dfde;
-    color: #FEE;
+    color: rgb(214, 66, 66);
 }
 
 h1{
@@ -30,8 +30,23 @@ h1{
     background: url("img.jpg");
     background-size: 100vw 100vh;
     font-family: 'Dancing Script';
+    color: #FEE;
 }
 
 #mobile{
     background-color: #e3dfde;
+}
+
+.card-mobile{
+    width: 50%;
+    margin: auto;
+}
+
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .card-mobile{
+        width: 100%;    
+        margin: auto;
+    }    
 }
