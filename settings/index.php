@@ -31,8 +31,15 @@
     ?>
     <div class="container">
         <div class="row">
-            <form class="col s6 offset-s3 form-pad-top" method="POST" action="update.php">
-                <div class="card-panel">
+            <form class="col s12 center-align form-pad-top" method="POST" action="update.php">
+                <div class="card-panel card-mobile">
+                    <?php 
+                        if(isset($_SESSION['error'])){
+                            $error = $_SESSION['error'];
+                            echo "<h5 class='center-align'>$error</h5>";
+                            unset($_SESSION['error']);       
+                        }                 
+                    ?>
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="username" value="<?php echo $username ?>" name="username" type="text" class="validate" required>

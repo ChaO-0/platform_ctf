@@ -20,8 +20,8 @@
 
     <div class="container">
         <div class="row">
-            <form class="col s6 offset-s3 form-pad-top" method="POST" action="login_process.php">
-                <div class="card-panel">
+            <form class="col s12 center-align form-pad-top" method="POST" action="login_process.php">
+                <div class="card-panel card-mobile">
                     <div class="red-text center-align">
                         <?php
                             if(isset($_SESSION['error'])){
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s12 offset-s8">
+                        <div class="col s12 right-align">
                             <button class="btn waves-effect waves-light" type="submit" name="action">Submit
                                 <i class="material-icons right">send</i>
                             </button>

@@ -7,7 +7,7 @@
                     require_once "session_check.php";
                     if($check != 1){
                 ?>
-                <li><a href="register.php">Register</a></li>
+                <li><a href="/platform_ctf/register">Register</a></li>
                 <li><a href="/platform_ctf/login">Login</a></li>
                 <?php } 
                     else{
