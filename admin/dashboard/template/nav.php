@@ -9,6 +9,8 @@
         header("location:/platform_ctf/login");
         die();
     }
+    if(isset($_SESSION['id']) && $_SESSION['role'] !== "1")
+        die(header("location:/platform_ctf/challenges"));
 ?>
 <div class="navbar-bg"></div>
 <nav class="navbar navbar-expand-lg main-navbar">
