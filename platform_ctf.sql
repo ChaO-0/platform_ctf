@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 14, 2019 at 01:46 PM
+-- Generation Time: Nov 16, 2019 at 09:34 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.11
 
@@ -67,8 +67,7 @@ CREATE TABLE `challenges` (
 --
 
 INSERT INTO `challenges` (`id_chall`, `title`, `descript`, `id_category`, `flag`, `hint`, `poin`, `id_file`, `status`) VALUES
-(1, 'cipher 7', 'Zlshtha khahun pup mshn RJAM{zlshtha_k4ahun_ws4f3y}', 3, 'KCTF{selamat_d4tang_pl4y3r}', 'online tool mungkin berguna', 100, NULL, 1),
-(2, 'free flag', '<p>KCTF{ini_free_flag}<br></p>', 5, 'KCTF{ini_free_flag}', 'gak ada', 50, NULL, 1);
+(1, 'Free Flag', '<p>Selamat Datang<br></p>', 5, 'KCTF{ini_free_flag}', '', 100, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -108,7 +107,7 @@ CREATE TABLE `users` (
   `username` varchar(30) NOT NULL,
   `password` char(32) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `affiliation` varchar(30) NOT NULL,
+  `affiliation` varchar(30) DEFAULT NULL,
   `role` int(11) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -118,7 +117,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `username`, `password`, `email`, `affiliation`, `role`, `status`) VALUES
-(1, 'GrizzlyMg', '5f4dcc3b5aa765d61d8327deb882cf99', 'fajar@gmail.com', 'japan', 1, 1);
+(1, 'GrizzlyMg', '5f4dcc3b5aa765d61d8327deb882cf99', 'fajar@gmail.com', 'japan', 1, 1),
+(2, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test@gmail.com', 'korea', 0, 1),
+(3, 'gladys', '05fe03b494c0f1a7d6cb49f0bf3fd70d', 'gladys@gmail.com', '', 0, 1);
 
 --
 -- Indexes for dumped tables
@@ -168,7 +169,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `challenges`
 --
 ALTER TABLE `challenges`
-  MODIFY `id_chall` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_chall` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `files`
@@ -186,7 +187,7 @@ ALTER TABLE `notification`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
