@@ -24,6 +24,15 @@
         // return isset($_SESSION['id']) ? '' : header('location:/platform_ctf/login');
       ?>
       
+      <?php
+        include 'template/root.php';
+        $query_users="SELECT COUNT(*) as total FROM users ";
+        $total_user=$conn->query($query_users)->fetch_assoc();
+        $query_chall= "SELECT COUNT(*) as total FROM challenges";
+        $total_chall= $conn->query($query_chall)->fetch_assoc();
+        $query_notif= "SELECT COUNT(*) as total FROM notification";
+        $total_notif= $conn->query($query_notif)->fetch_assoc();
+      ?>
   <!-- TEST -->
       <!-- Card Content -->
       <div class="main-content">
@@ -42,7 +51,9 @@
                     <h4>Total Users</h4>
                   </div>
                   <div class="card-body">
-                    20
+                    <?php
+                      echo $total_user['total'];
+                    ?>
                   </div>
                 </div>
               </div>
@@ -57,7 +68,10 @@
                     <h4>Challenges</h4>
                   </div>
                   <div class="card-body">
-                    42
+                    <?php
+                    
+                      echo $total_chall['total'];
+                    ?>
                   </div>
                 </div>
               </div>
@@ -72,7 +86,9 @@
                     <h4>Notification</h4>
                   </div>
                   <div class="card-body">
-                    10
+                      <?php
+                        echo $total_notif['total'];
+                      ?>
                   </div>
                 </div>
               </div>
