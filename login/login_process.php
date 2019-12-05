@@ -17,9 +17,12 @@
     if($result->num_rows == 1){
         $_SESSION['id'] = $id;
         $_SESSION['role'] = $role;
-        $_SESSION['role'] == 1 ? header("location:/platform_ctf/admin/dashboard") : header("location:../challenges");
+        // $_SESSION['role'] == 1 ? header("location:/platform_ctf/admin/dashboard") : header("location:../challenges");
+        echo 1;
     }else{
         $_SESSION['error'] = 'Wrong username or password';
-        header("location:index.php");
+        $error = $_SESSION['error'];
+        // header("location:index.php");
+        echo $error;
     }
 ?> 

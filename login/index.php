@@ -20,13 +20,13 @@
 
     <div class="container">
         <div class="row">
-            <form class="col s12 center-align form-pad-top" method="POST" action="login_process.php">
+            <form class="col s12 center-align form-pad-top" id="login-form">
                 <div class="card-panel card-mobile">
                     <div class="red-text center-align">
                         <?php
                             if(isset($_SESSION['error'])){
                                 $error = $_SESSION['error'];
-                                echo "<script>M.toast({html: '$error', displayLength: 1500, classes: 'rounded'})</script>";
+                                // echo "<script>M.toast({html: '$error', displayLength: 1500, classes: 'rounded'})</script>";
                                 session_destroy();
                             }
                         ?>
@@ -45,7 +45,7 @@
                     </div>
                     <div class="row">
                         <div class="col s12 right-align">
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                            <button class="btn waves-effect waves-light" type="button" name="action" id="login">Submit
                                 <i class="material-icons right">send</i>
                             </button>
                         </div>
@@ -58,6 +58,28 @@
     <script>
         $(document).ready(function(){
             $('.sidenav').sidenav();
+        });
+        $('#login').click(function (e) { 
+            var data = $('#login-form').serialize();
+            $.ajax({
+                type: "POST",
+                url: "login_process.php",
+                async: false,
+                timeout: 300000,
+                data: data,
+                success: function (response) {
+                    if(response == 1){
+                        M.toast({html: "Login success", displayLength: 1500, outDuration: 300, classes: 'rounded'});
+                        setTimeout(() => {
+                            window.location.href = "../challenges/index.php";
+                        }, 1000);
+                    }
+                    else{
+                        M.toast({html: "Wrong username or password !", displayLength: 1500, outDuration: 300, classes: 'rounded'});
+                    }
+                }
+            });
+            
         });
     </script>
 </body>

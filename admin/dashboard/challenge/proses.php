@@ -12,7 +12,7 @@
     $ins_chal="INSERT INTO challenges VALUES( NULL,'$title','$desc',$category,'$flag','$hint','$poin',NULL,'$status')";
     if($conn->query($ins_chal)){
         $_SESSION['success']="Berhasil Input";
-                header("location:./");
+        header("location:./");
     }
     else{
         echo mysqli_error($conn);
