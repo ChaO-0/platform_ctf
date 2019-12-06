@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Nov 16, 2019 at 09:34 AM
+-- Generation Time: Dec 06, 2019 at 01:25 PM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.11
 
@@ -67,7 +67,9 @@ CREATE TABLE `challenges` (
 --
 
 INSERT INTO `challenges` (`id_chall`, `title`, `descript`, `id_category`, `flag`, `hint`, `poin`, `id_file`, `status`) VALUES
-(1, 'Free Flag', '<p>Selamat Datang<br></p>', 5, 'KCTF{ini_free_flag}', '', 100, NULL, 1);
+(1, 'Free Flag', '<p>Selamat Datang<br></p>', 5, 'KCTF{ini_free_flag}', '', 100, NULL, 1),
+(2, 'awn', '<p>1234<br></p>', 1, '1234', '', 10, NULL, 1),
+(3, 'asdkljalskd', '<b>sdas </b><i>nama <u>under</u></i><br><b></b>', 5, 'asdasd', 'asdasd', 103, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -93,6 +95,20 @@ CREATE TABLE `notification` (
   `id_notif` int(11) NOT NULL,
   `title` int(11) NOT NULL,
   `description` int(11) NOT NULL,
+  `status` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `solves`
+--
+
+CREATE TABLE `solves` (
+  `id_solve` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_chall` int(11) NOT NULL,
+  `user_flag` varchar(50) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -150,6 +166,12 @@ ALTER TABLE `notification`
   ADD PRIMARY KEY (`id_notif`);
 
 --
+-- Indexes for table `solves`
+--
+ALTER TABLE `solves`
+  ADD PRIMARY KEY (`id_solve`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -169,7 +191,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `challenges`
 --
 ALTER TABLE `challenges`
-  MODIFY `id_chall` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_chall` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `files`
@@ -182,6 +204,12 @@ ALTER TABLE `files`
 --
 ALTER TABLE `notification`
   MODIFY `id_notif` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `solves`
+--
+ALTER TABLE `solves`
+  MODIFY `id_solve` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
