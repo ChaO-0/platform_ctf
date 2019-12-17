@@ -91,15 +91,25 @@
                 var data = $('#login-form').serialize();
                 $.ajax({
                     type: "POST",
+                    datatype: "json",
                     url: "login_process.php",
                     async: false,
                     data: data,
                     success: function (response) {
-                        if(response == 1){
-                            M.toast({html: "Login success", displayLength: 1500, outDuration: 300, classes: 'rounded'});
-                            setTimeout(() => {
-                                window.location.href = "../challenges/index.php";
-                            }, 1000);
+                        var data = JSON.parse(response);
+                        if(data['login']){
+                            if(data['role'] === "1"){
+                                M.toast({html: "Welcome, " + data['username'], displayLength: 1500, outDuration: 300, classes: 'rounded'});
+                                setTimeout(() => {
+                                    window.location.href = "../admin/dashboard/index.php";
+                                }, 1000);
+                            }
+                            else{
+                                M.toast({html: "Welcome, " + data['username'], displayLength: 1500, outDuration: 300, classes: 'rounded'});
+                                setTimeout(() => {
+                                    window.location.href = "../challenges/index.php";
+                                }, 1000);
+                            }
                         }
                         else{
                             M.toast({html: "Wrong username or password !", displayLength: 1500, outDuration: 300, classes: 'rounded'});

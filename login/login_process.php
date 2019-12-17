@@ -18,11 +18,14 @@
         $_SESSION['id'] = $id;
         $_SESSION['role'] = $role;
         // $_SESSION['role'] == 1 ? header("location:/platform_ctf/admin/dashboard") : header("location:../challenges");
-        echo 1;
+        $data = array(
+            "role" => $role,
+            "username" => $username,
+            "login" => true
+        );
+        echo json_encode($data);
     }else{
-        $_SESSION['error'] = 'Wrong username or password';
-        $error = $_SESSION['error'];
-        // header("location:index.php");
-        echo $error;
+        $data = array("login" => false);
+        echo json_encode($data);
     }
 ?> 
