@@ -21,23 +21,39 @@
             die();
         }
     ?>
-    <div class="container">
-        <h3>PWN</h3>
-        <div class="row">
-            <div class="col s6 m4">
-                <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                        <span class="card-title center-align">T bisa diracun</span>
-                        <p>Jika sebuah program C di compile dengan libc > 2.26,
-                            maka program tersebut menggunakan konsep "T Cache" untuk
-                            menyimpan free-list, dapatkan kalian meng-eksploitasi program ini?</p>
-                    </div>
-                    <div class="card-action">
-                        <a href="#">This is a link</a>
-                    </div>
+    <div class="row chall-list">
+        <div class="col xl2 m4">
+            <div class="categories">
+                <div class="list-categories">
+                    <a href="#" class="waves-effect waves-light btn">Reverse Engineering</a>
+                    <a href="#" class="waves-effect waves-light btn">Reverse Engineering</a>
+                    <a href="#" class="waves-effect waves-light btn">Reverse Engineering</a>
+                    <a href="#" class="waves-effect waves-light btn">Reverse Engineering</a>
+                    <a href="#" class="waves-effect waves-light btn">Reverse Engineering</a>
                 </div>
             </div>
         </div>
+        
+        <div class="col xl10 m8">
+
+            <div class="chall-container">
+                <?php for($i=0;$i<20;$i++){ ?>
+                    <a href="#">
+                        <div class="chall-card">
+                            <div class="card blue-grey darken-1">
+                                <div class="card-content white-text">
+                                    <span class="card-title">Card Title</span>
+                                    <p>50</p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                <?php } ?>
+                
+
+            </div>
+        </div>
+
     </div>
     <script>
         $(document).ready(function(){
