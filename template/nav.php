@@ -29,7 +29,7 @@
                 <li><a href="#">Notifications</a></li>
                 <li><a href="#">Users</a></li>
                 <li><a href="#">Scoreboard</a></li>
-                <li><a href="/platform_ctf/challenges">Challenges</a></li>
+                <li id="challenges"><a href="/platform_ctf/challenges">Challenges</a></li>
             </ul>
         </div>
     </nav>

@@ -62,6 +62,7 @@
     <script>
         $(document).ready(function(){
             $('.sidenav').sidenav();
+            $('#challenges').addClass('active');
         });
     </script>
 </body>
