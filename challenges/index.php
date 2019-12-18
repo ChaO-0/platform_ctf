@@ -16,41 +16,33 @@
 <body>
     <?php
         require_once("../template/nav.php");
+        require_once("../template/connection.php");
         if(empty($_SESSION['id'])){
             header('location:/platform_ctf/login');
             die();
         }
+        $sql = "SELECT * FROM category";
+        $result = $conn->query($sql);
     ?>
     <div class="row chall-list">
-        <div class="col xl2 m4">
+        <div class="col xl2 m4 s12">
             <div class="categories">
                 <div class="list-categories">
+                    <a class="waves-effect waves-light btn chall" value=0>ALL</a>
+                    <?php while($row = $result->fetch_assoc()){ ?>
+                    <a class="waves-effect waves-light btn chall" value="<?php echo $row['id_category']; ?>"><?php echo $row['category']; ?></a> <?php } ?>
+                    <!-- <a href="#" class="waves-effect waves-light btn">Reverse Engineering</a>
                     <a href="#" class="waves-effect waves-light btn">Reverse Engineering</a>
                     <a href="#" class="waves-effect waves-light btn">Reverse Engineering</a>
                     <a href="#" class="waves-effect waves-light btn">Reverse Engineering</a>
-                    <a href="#" class="waves-effect waves-light btn">Reverse Engineering</a>
-                    <a href="#" class="waves-effect waves-light btn">Reverse Engineering</a>
+                    <a href="#" class="waves-effect waves-light btn">Reverse Engineering</a> -->
                 </div>
             </div>
         </div>
         
-        <div class="col xl10 m8">
-
+        <div class="col xl10 m8 s12 center-align">
             <div class="chall-container">
-                <?php for($i=0;$i<20;$i++){ ?>
-                    <a href="#">
-                        <div class="chall-card">
-                            <div class="card blue-grey darken-1">
-                                <div class="card-content white-text">
-                                    <span class="card-title">Card Title</span>
-                                    <p>50</p>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                <?php } ?>
-                
-
+                    <?php require_once "view.php"; ?>
             </div>
         </div>
 
@@ -59,6 +51,21 @@
         $(document).ready(function(){
             $('.sidenav').sidenav();
             $('#challenges').addClass('active');
+
+            $('.chall').click(function(){
+                // console.log($(this).attr('value'));
+                var value = $(this).attr('value');
+                $.ajax({
+                    type: "GET",
+                    url: "view.php",
+                    data: {id: value},
+                    dataType: "html",
+                    success: function(response){
+                        // alert(response);
+                        $(".chall-container").html(response);
+                    }
+                })
+            })
         });
     </script>
 </body>

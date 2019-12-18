@@ -8,7 +8,7 @@
                     if($check != 1){
                 ?>
                 <li><a href="/platform_ctf/register">Register</a></li>
-                <li><a href="/platform_ctf/login">Login</a></li>
+                <li id="login"><a href="/platform_ctf/login">Login</a></li>
                 <?php } 
                     else{
                 ?>

@@ -47,14 +47,6 @@ h1{
     margin: auto;
 }
 
-@media only screen and (max-width: 768px) {
-    /* For mobile phones: */
-    .card-mobile{
-        width: 100%;    
-        margin: auto;
-    }    
-}
-
 .chall-list{
     margin-top:20px;
 }
@@ -75,4 +67,12 @@ h1{
 .chall-container{
     height: 80vh;
     overflow-y: scroll;
+}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    .card-mobile{
+        width: 100%;    
+        margin: auto;
+    }    
 }

@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="../assets/style.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.14.0/jquery.validate.js"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <title>Welcome</title>
@@ -46,7 +45,7 @@
                     </div>
                     <div class="row">
                         <div class="col s12 right-align">
-                            <button class="btn waves-effect waves-light" type="button" name="action" id="login">Submit
+                            <button class="btn waves-effect waves-light" type="button" id="login_button">Submit
                                 <i class="material-icons right">send</i>
                             </button>
                         </div>
@@ -59,18 +58,19 @@
     <script>
         $(document).ready(function(){
             $('.sidenav').sidenav();
+            $('#login').addClass('active');
         });
 
         $(document).on('keypress', 'input', function(e) {
             if(e.which == 13) {
-                $('#login').click();
+                $('#login_button').click();
                 return false;
             }
         });
 
         function validate() {
             var valid = true;
-            $("#login-form input[required], #login-form textarea[required]").each(function(){
+            $("#login-form input[required]").each(function(){
                 $(this).removeClass('invalid');
                 $(this).attr('title','');
                 if(!$(this).val()){ 
@@ -85,7 +85,7 @@
             return valid;
         }
 
-        $('#login').click(function (e) {
+        $('#login_button').click(function (e) {
             var valid = validate();
             if(valid){
                 var data = $('#login-form').serialize();
