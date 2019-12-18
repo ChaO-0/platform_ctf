@@ -54,3 +54,25 @@ h1{
         margin: auto;
     }    
 }
+
+.chall-list{
+    margin-top:20px;
+}
+
+.list-categories .btn{
+    display: block;
+    margin-top: 15px;
+}
+.chall-card{
+    display: inline-block;
+    margin-right: 10px;
+
+}
+.chall-card .card{
+    width: 328px;
+    text-align: center;
+}
+.chall-container{
+    height: 80vh;
+    overflow-y: scroll;
+}
