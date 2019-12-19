@@ -78,7 +78,6 @@
             $('#challenges').addClass('active');
             $('.modal').modal();
             $('.chall').click(function(){
-                // console.log($(this).attr('value'));
                 var value = $(this).attr('value');
                 $('.chall').removeClass('clicked');
                 ($(this).addClass('clicked'));
@@ -88,11 +87,9 @@
                     data: {id: value},
                     dataType: "html",
                     success: function(response){
-                        // alert(response);
                         $(".chall-container").html(response);
                     }
                 })
-                // ($(this).removeClass('clicked'));
             })
         });
     </script>
