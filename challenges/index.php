@@ -28,7 +28,7 @@
         <div class="col xl2 m4 s12">
             <div class="categories">
                 <div class="list-categories">
-                    <a class="waves-effect waves-light btn chall" value=0>ALL</a>
+                    <a class="waves-effect waves-light btn chall clicked" value=0>ALL</a>
                     <?php while($row = $result->fetch_assoc()){ ?>
                     <a class="waves-effect waves-light btn chall" value="<?php echo $row['id_category']; ?>"><?php echo $row['category']; ?></a> <?php } ?>
                     <!-- <a href="#" class="waves-effect waves-light btn">Reverse Engineering</a>
@@ -40,7 +40,7 @@
             </div>
         </div>
         
-        <div class="col xl10 m8 s12 center-align">
+        <div class="col xl10 m8 s12">
             <div class="chall-container">
                     <?php require_once "view.php"; ?>
             </div>
@@ -55,6 +55,8 @@
             $('.chall').click(function(){
                 // console.log($(this).attr('value'));
                 var value = $(this).attr('value');
+                $('.chall').removeClass('clicked');
+                ($(this).addClass('clicked'));
                 $.ajax({
                     type: "GET",
                     url: "view.php",
@@ -65,6 +67,7 @@
                         $(".chall-container").html(response);
                     }
                 })
+                // ($(this).removeClass('clicked'));
             })
         });
     </script>
