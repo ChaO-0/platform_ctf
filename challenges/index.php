@@ -42,16 +42,41 @@
         
         <div class="col xl10 m8 s12">
             <div class="chall-container">
-                    <?php require_once "view.php"; ?>
+                    <?php 
+                        require_once "view.php"; ?>
             </div>
         </div>
-
     </div>
+    <?php 
+        $sql = "SELECT * FROM challenges";
+        $result = $conn->query($sql);
+        while($row = $result->fetch_assoc()){
+    ?>
+    <div id="<?php echo "chall" . $row['id_chall']; ?>" class="modal">
+        <div class="modal-content">
+            <h3 class="center-align"><?php echo $row['title']; ?></h3>
+            <div class="left-align">
+                <?php echo $row['descript']; ?>
+            </div>
+            <div class="input-field">
+                <input id="flag" type="text" class="validate">
+                <label for="flag">Flag</label>
+                <span class="helper-text">Input flag here</span>
+            </div>
+            <div class="center-align flag-submit">
+                <button type="button" class="btn-large">Submit</button>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
+    <?php }?>
     <script>
         $(document).ready(function(){
             $('.sidenav').sidenav();
             $('#challenges').addClass('active');
-
+            $('.modal').modal();
             $('.chall').click(function(){
                 // console.log($(this).attr('value'));
                 var value = $(this).attr('value');

@@ -6,12 +6,12 @@
         $id = '0';
     }
 
-    if($id != 0){
-        $sql = "SELECT * FROM challenges WHERE id_category=$id";
+    if($id == 0){
+        $sql = "SELECT * FROM challenges ORDER BY poin ASC";
         $result = $conn->query($sql);
         while($row = $result->fetch_assoc()){
 ?>    
-    <a href="#">
+    <a href="#<?php echo "chall" . $row['id_chall']; ?>" class="modal-trigger">
         <div class="chall-card">
             <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
@@ -25,10 +25,10 @@
             }
         }
     else{
-        $sql = "SELECT * FROM challenges";
+        $sql = "SELECT * FROM challenges WHERE id_category=$id ORDER BY poin ASC";
         $result = $conn->query($sql);
         while($row = $result->fetch_assoc()){ ?>
-        <a href="#">
+    <a href="#<?php echo "chall" . $row['id_chall']; ?>" class="modal-trigger">
         <div class="chall-card">
             <div class="card blue-grey darken-1">
                 <div class="card-content white-text">
