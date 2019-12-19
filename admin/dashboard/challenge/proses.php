@@ -1,5 +1,5 @@
 <?php
-    include '../template/root.php ';
+    include '../template/root.php';
     session_start();
     $title = $_POST['title'];
     $category = $_POST['category'];
@@ -17,7 +17,4 @@
     else{
         echo mysqli_error($conn);
     }
-
-
-
 ?>

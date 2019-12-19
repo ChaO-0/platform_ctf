@@ -1,6 +1,6 @@
 <?php
         session_start();
-        include '../template/root.php ';
+        include '../template/root.php';
         $id_chall = $_POST['id_chall'];
         $title = $_POST['title'];
         $category = $_POST['category'];
