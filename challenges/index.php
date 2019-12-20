@@ -104,7 +104,7 @@
                     url: "solve.php",
                     data: values,
                     success: function(response){
-                        alert(response);
+                        M.toast({html: response, displayLength: 1500, outDuration: 300, classes: 'rounded'});;
                     }
                 })
             })
