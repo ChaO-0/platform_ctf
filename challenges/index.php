@@ -59,12 +59,12 @@
                 <?php echo $row['descript']; ?>
             </div>
             <div class="input-field">
-                <input id="flag" type="text" class="validate">
+                <input type="text" class="flag-val" id="<?php echo 'flag' . $row['id_chall']; ?>">
                 <label for="flag">Flag</label>
                 <span class="helper-text">Input flag here</span>
             </div>
             <div class="center-align flag-submit">
-                <button type="button" class="btn-large">Submit</button>
+                <button type="button" value="<?php echo $row['id_chall']; ?>" class="btn-large">Submit</button>
             </div>
         </div>
         <div class="modal-footer">
@@ -88,6 +88,23 @@
                     dataType: "html",
                     success: function(response){
                         $(".chall-container").html(response);
+                    }
+                });
+            });
+            $('.flag-submit').click(function(){
+                let input_id = $(this).children('button').val();
+                let flag = ($("#flag" + input_id).val());
+                // alert(flag);
+                let values = {
+                   'id' : input_id,
+                   'flag' : flag
+                };
+                $.ajax({
+                    type: "POST",
+                    url: "solve.php",
+                    data: values,
+                    success: function(response){
+                        alert(response);
                     }
                 })
             })
