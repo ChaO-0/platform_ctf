@@ -113,16 +113,16 @@
                         let result = JSON.parse(response);
                         if(result['message'] == "Solved"){
                             let message = result['message'];
-                            M.toast({html: message, displayLength: 1500, outDuration: 1000, classes: 'rounded'});
+                            M.toast({html: message, displayLength: 1500, outDuration: 1000, classes: 'rounded teal accent-3'});
                             $('#card' + input_id).addClass('teal accent-3').removeClass('blue-grey darken-1')
                         }
                         else if(result['message'] == "You already solved this challenge"){
                             let message = result['message'];
-                            M.toast({html: message, displayLength: 1500, outDuration: 1000, classes: 'rounded'});
+                            M.toast({html: message, displayLength: 1500, outDuration: 1000, classes: 'rounded teal accent-3'});
                         }
                         else{
                             let message = result['message'];
-                            M.toast({html: message, displayLength: 1500, outDuration: 1000, classes: 'rounded'});    
+                            M.toast({html: message, displayLength: 1500, outDuration: 1000, classes: 'rounded red accent-3'});    
                         }
                     }
                 })

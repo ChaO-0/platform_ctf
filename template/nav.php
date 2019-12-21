@@ -19,7 +19,7 @@
                 <li><a href="/platform_ctf/admin/dashboard">Admin</a></li>
                     <?php } ?>
                 <li><a href="#">Profile</a></li>
-                <li><a href="/platform_ctf/settings">Settings</a></li>
+                <li id="settings"><a href="/platform_ctf/settings">Settings</a></li>
                 <li><a href="/platform_ctf/logout">Logout</a></li>
                 <?php
                     } 
@@ -27,7 +27,7 @@
             </ul>
             <ul class="left hide-on-med-and-down">
                 <li><a href="#">Notifications</a></li>
-                <li><a href="#">Users</a></li>
+                <li id="users"><a href="/platform_ctf/users">Users</a></li>
                 <li><a href="#">Scoreboard</a></li>
                 <li id="challenges"><a href="/platform_ctf/challenges">Challenges</a></li>
             </ul>

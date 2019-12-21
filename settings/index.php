@@ -84,6 +84,7 @@
     <script>
         $(document).ready(function(){
             $('.sidenav').sidenav();
+            $('#settings').addClass('active');
         });
     </script>
 </body>
