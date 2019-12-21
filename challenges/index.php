@@ -51,10 +51,15 @@
         $sql = "SELECT * FROM challenges";
         $result = $conn->query($sql);
         while($row = $result->fetch_assoc()){
+            $id = $row['id_chall'];
+            $user = $_SESSION['id'];
+            $findsolve = "SELECT id_user, status FROM `solves` WHERE id_chall='$id' AND id_user='$user' AND status=1";
+            $solved = $conn->query($findsolve);
+            
     ?>
     <div id="<?php echo "chall" . $row['id_chall']; ?>" class="modal">
         <div class="modal-content">
-            <h3 class="center-align"><?php echo $row['title']; ?></h3>
+            <h3 class="center-align"><?php echo $row['title']; while($data = $solved->fetch_assoc()){if($data['status'] == 1)echo "(Solved)";} ?></h3>
             <div class="left-align">
                 <?php echo $row['descript']; ?>
             </div>
@@ -77,6 +82,7 @@
             $('.sidenav').sidenav();
             $('#challenges').addClass('active');
             $('.modal').modal();
+            $('.chall-card').find('.teal.accent-3').removeClass('blue-grey darken-1');
             $('.chall').click(function(){
                 var value = $(this).attr('value');
                 $('.chall').removeClass('clicked');
@@ -88,14 +94,14 @@
                     dataType: "html",
                     success: function(response){
                         $(".chall-container").html(response);
+                        $('.chall-card').find('.teal.accent-3').removeClass('blue-grey darken-1');
                     }
                 });
             });
-            $('.flag-submit').click(function(){
+            $('.flag-submit').click(function(){    
                 let input_id = $(this).children('button').val();
                 let flag = ($("#flag" + input_id).val());
-                // alert(flag);
-                let values = {
+                var values = {
                    'id' : input_id,
                    'flag' : flag
                 };
@@ -104,7 +110,20 @@
                     url: "solve.php",
                     data: values,
                     success: function(response){
-                        M.toast({html: response, displayLength: 1500, outDuration: 300, classes: 'rounded'});;
+                        let result = JSON.parse(response);
+                        if(result['message'] == "Solved"){
+                            let message = result['message'];
+                            M.toast({html: message, displayLength: 1500, outDuration: 1000, classes: 'rounded'});
+                            $('#card' + input_id).addClass('teal accent-3').removeClass('blue-grey darken-1')
+                        }
+                        else if(result['message'] == "You already solved this challenge"){
+                            let message = result['message'];
+                            M.toast({html: message, displayLength: 1500, outDuration: 1000, classes: 'rounded'});
+                        }
+                        else{
+                            let message = result['message'];
+                            M.toast({html: message, displayLength: 1500, outDuration: 1000, classes: 'rounded'});    
+                        }
                     }
                 })
             })

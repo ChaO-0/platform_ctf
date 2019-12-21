@@ -16,14 +16,24 @@
     }
     $id_user = $_SESSION['id'];
 
-    $sql = "INSERT INTO solves(id_user, id_chall, user_flag, status)
-            VALUES('$id_user', '$id', '$flag', '$status')";
-    
-    if($result = $conn->query($sql)){
-        if($status == 1){
-            echo "Solved";
+    $sql = "SELECT status FROM solves WHERE id_chall='$id' AND id_user='$id_user' AND status=1";
+    $check = $conn->query($sql);
+    // echo $check->num_rows;
+    if($check->num_rows == 0){
+        $sql = "INSERT INTO solves(id_user, id_chall, user_flag, status)
+                VALUES('$id_user', '$id', '$flag', '$status')";
+        if($result = $conn->query($sql)){
+            if($status == 1){
+                $data = array("message" => "Solved");
+                echo json_encode($data);
+            }
+            else{
+                $data = array("message" => "Incorrect");
+                echo json_encode($data);
+            }
         }
-        else{
-            echo "Wrong";
-        }
+    }
+    else{
+        $data = array("message" => "You already solved this challenge");
+        echo json_encode($data);
     }
