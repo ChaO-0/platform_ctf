@@ -58,11 +58,11 @@
                       <thead>
                         <tr>
                           <th scope="col">No.</th>
-                          <th scope="col" class="title">Title</th>
-                          <th scope="col">Description</th>
+                          <th scope="col">Title</th>
+                          <!-- <th scope="col">Description</th> -->
                           <th scope="col">Category</th>
                           <th scope="col">Flag</th>
-                          <th scope="col">Hint</th>
+                          <!-- <th scope="col">Hint</th> -->
                           <th scope="col">Poin</th>
                           <th scope="col">Action</th>
                         </tr>
@@ -71,16 +71,19 @@
                       <?php
                         while($view_chall=$view->fetch_array(MYSQLI_ASSOC)){
                       ?>
+                        
                           <tr>
+                          
                             <td><?php echo $no++; ?></td>
                             <td><?php echo $view_chall['title'];?></td>
-                            <td><?php echo $view_chall['descript'];?></td>
+                            <!-- <td><?php echo $view_chall['descript'];?></td> -->
                             <td><?php echo $view_chall['category'];?></td>
                             <td><?php echo $view_chall['flag'];?></td>
-                            <td><?php echo $view_chall['hint'];?></td>
+                            <!-- <td><?php echo $view_chall['hint'];?></td> -->
                             <td><?php echo $view_chall['poin'];?></td>
+                          
                             <td>
-                            <a href="<?php echo 'edit.php?id='.$view_chall['id_chall'].'&&id_cate='.$view_chall['id_category']; ?>" class="btn btn-icon icon-left btn-primary btn_chall"><i class="far fa-edit"></i> Edit</a>
+                            <a href="<?php echo 'view.php?id='.$view_chall['id_chall']."&&id_cate=".$view_chall['id_category'] ?>" class="btn btn-icon icon-left btn-primary btn_chall"><i class="fas fa-eye"></i>View</a>
                             
                             <a href="<?php echo 'delete.php?id='.$view_chall['id_chall']; ?>" class="btn btn-icon icon-left btn-danger btn_chall"><i class="fas fa-trash-alt"></i> Delete</a>
                             </td>

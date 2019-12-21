@@ -4,14 +4,17 @@
  * because it will make it harder for you to update.
  * 
  */
+    .table-responsive{
+        /* max-width: 100%; */
+    }
+    .thead{
+        width: 10px !important ;
+    }
     .navbar-bg{
         background-color: #52b8c3 !important;
     }
     .selectric-items li.selected, .selectric-items li.highlighted{
         background-color: #52b8c3 !important;
-    }
-    th.title{
-        width: 110px;
     }
     .main-sidebar .sidebar-menu li a:hover{
         background-color: #52b8c363 !important;
