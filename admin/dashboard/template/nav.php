@@ -57,15 +57,18 @@
         <a href="<?php echo $home; ?>">Dsh.</a>
         </div>
         <ul class="sidebar-menu">
-        <li class="dropdown active">
-        <li>
-            <a class="nav-link" href="<?php echo $user; ?>"><i class="fas fa-users"></i> <span>Users</span></a>
-        </li>
-        <li>
-            <a class="nav-link" href="<?php echo $chall; ?>"><i class="fas fa-fire"></i> <span>Challenge</span></a>
-        </li>
-        <li>
-            <a class="nav-link" href="<?php echo $notif; ?>"><i class="far fa-bell"></i> <span>Notification</span></a>
-        </li>
+            <li class="dropdown active">
+            <li>
+                <a class="nav-link" href="<?php echo $user; ?>"><i class="fas fa-users"></i> <span>Users</span></a>
+            </li>
+            <li>
+                <a class="nav-link" href="<?php echo $chall; ?>"><i class="fas fa-fire"></i> <span>Challenge</span></a>
+            </li>
+            <li>
+                <a class="nav-link" href="<?php echo $notif; ?>"><i class="far fa-bell"></i> <span>Notification</span></a>
+            </li>
+            <li>
+                <a class="nav-link" href="<?php echo $solve; ?>"><i class="fas fa-circle"></i> <span>Solves</span></a>
+            </li>
         </ul>
     </div>

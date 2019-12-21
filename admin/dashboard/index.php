@@ -19,6 +19,7 @@
         $user='users/';
         $chall='challenge/';
         $notif='notification/';
+        $solve = './solve';
         $logout='';
         include 'template/nav.php';
         // return isset($_SESSION['id']) ? '' : header('location:/platform_ctf/login');
@@ -32,6 +33,8 @@
         $total_chall= $conn->query($query_chall)->fetch_assoc();
         $query_notif= "SELECT COUNT(*) as total FROM notification";
         $total_notif= $conn->query($query_notif)->fetch_assoc();
+        $query_solve= "SELECT COUNT(*) as total FROM solves";
+        $total_solve=$conn->query($query_solve)->fetch_assoc();
       ?>
   <!-- TEST -->
       <!-- Card Content -->
@@ -103,7 +106,7 @@
                     <h4>Solves</h4>
                   </div>
                   <div class="card-body">
-                    47
+                    <?php echo $total_solve['total']; ?>
                   </div>
                 </div>
               </div>
