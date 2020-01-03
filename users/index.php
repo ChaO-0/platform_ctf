@@ -19,36 +19,33 @@
         require_once "../template/connection.php";
     ?>
     <div class="container">
-        <table class="striped centered">
-            <thead>
-                <tr>
-                    <th>No. </th>
-                    <th>Name</th>
-                    <th>Affiliation</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php
-                    $no = 1;
-                    $sql = "SELECT * FROM users";
-                    $result = $conn->query($sql);
-                    while($row = $result->fetch_assoc()){
-                        if($row['role'] != 1){
-                ?>
-                <tr>
-                    <td><?php echo $no++; ?></td>
-                    <td><?php echo $row['username']; ?></td>
-                    <td><?php echo $row['affiliation']; ?></td>
-                </tr>
-                <?php 
-                        } 
-                    }
-                ?>
-            </tbody>
+        <table class="striped centered" id="users_table">
+            <?php require_once 'users.php'; ?>
         </table>
+        <ul class="pagination center-align">
+            <?php for($i = 1; $i <= $pages; $i++){ ?>
+            <li class="waves-effect teal accent-4 <?php if($page == $i){ echo "active"; } ?> paging"><a><?php echo $i ?></a></li>
+            <?php } ?>
+        </ul>
     </div>
     <script>
-        $('#users').addClass('active');
+        $(document).ready(function(){
+            $('#users').addClass('active');
+            $('.paging').click(function(){
+                let page = $(this).text();
+                $.ajax({
+                    type: "get",
+                    url: "users.php",
+                    data: {page : page},
+                    dataType: "html",
+                    success: function (response) {
+                        $("#users_table").html(response);
+                    }
+                });
+                $(".paging").removeClass("active");
+                $(this).addClass("active");
+            })
+        })
     </script>
 </body>
 </html>
