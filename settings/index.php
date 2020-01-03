@@ -31,15 +31,8 @@
     ?>
     <div class="container">
         <div class="row">
-            <form class="col s12 center-align form-pad-top" method="POST" action="update.php">
+            <form class="col s12 center-align form-pad-top" id="update-form">
                 <div class="card-panel card-mobile">
-                    <?php 
-                        if(isset($_SESSION['error'])){
-                            $error = $_SESSION['error'];
-                            echo "<h5 class='center-align'>$error</h5>";
-                            unset($_SESSION['error']);       
-                        }                 
-                    ?>
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="username" value="<?php echo $username ?>" name="username" type="text" class="validate" required>
@@ -72,7 +65,7 @@
                     </div>
                     <div class="row">
                         <div class="right-align">
-                            <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+                            <button class="btn waves-effect waves-light" id="update" type="button">Submit
                                 <i class="material-icons right">send</i>
                             </button>
                         </div>
@@ -85,7 +78,27 @@
         $(document).ready(function(){
             $('.sidenav').sidenav();
             $('#settings').addClass('active');
+            $('#update').click(function (e) {
+                let data = $('#update-form').serialize();
+                $.ajax({
+                    type: "POST",
+                    datatype: "json",
+                    url: "update.php",
+                    async: false,
+                    data: data,
+                    success: function (response) {
+                        let data = JSON.parse(response);
+                        if(data['update'] === true){
+                            M.toast({html: "Successfully update data", displayLength: 1500, outDuration: 300, classes: 'rounded'});    
+                        }
+                        else{
+                            M.toast({html: "Password doesn't match", displayLength: 1500, outDuration: 300, classes: 'rounded'});
+                        }
+                    }
+                });
+            });
         });
+
     </script>
 </body>
 </html>

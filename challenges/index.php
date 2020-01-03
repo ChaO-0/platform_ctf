@@ -11,7 +11,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-    <title>Document</title>
+    <title>Challenges</title>
 </head>
 <body>
     <?php
@@ -84,7 +84,7 @@
             $('.modal').modal();
             $('.chall-card').find('.teal.accent-3').removeClass('blue-grey darken-1');
             $('.chall').click(function(){
-                var value = $(this).attr('value');
+                let value = $(this).attr('value');
                 $('.chall').removeClass('clicked');
                 ($(this).addClass('clicked'));
                 $.ajax({
@@ -97,6 +97,11 @@
                         $('.chall-card').find('.teal.accent-3').removeClass('blue-grey darken-1');
                     }
                 });
+            });
+            $(document).on('keypress', 'input', function(e) {
+                if(e.which == 13) {
+                    $(this).closest('.modal-content').children('.flag-submit').click();
+                }
             });
             $('.flag-submit').click(function(){    
                 let input_id = $(this).children('button').val();

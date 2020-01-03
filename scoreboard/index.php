@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Scoreboard</title>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Compiled and minified CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="../assets/style.css">
@@ -12,6 +13,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
     <!-- Compiled and minified JavaScript -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Document</title>
 </head>
 <body>
     <?php 
@@ -22,33 +24,34 @@
         <table class="striped centered">
             <thead>
                 <tr>
-                    <th>No. </th>
+                    <th>Place</th>
                     <th>Name</th>
-                    <th>Affiliation</th>
+                    <th>Score</th>
                 </tr>
             </thead>
             <tbody>
                 <?php
                     $no = 1;
-                    $sql = "SELECT * FROM users";
+                    $sql = "SELECT users.username, SUM(challenges.poin) AS poin FROM users 
+                            INNER JOIN solves ON users.id_user = solves.id_user 
+                            INNER JOIN challenges ON solves.id_chall = challenges.id_chall 
+                            WHERE solves.status = 1 
+                            GROUP BY users.id_user 
+                            ORDER BY challenges.poin DESC";
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()){
-                        if($row['role'] != 1){
                 ?>
                 <tr>
                     <td><?php echo $no++; ?></td>
                     <td><?php echo $row['username']; ?></td>
-                    <td><?php echo $row['affiliation']; ?></td>
+                    <td><?php echo $row['poin']; ?></td>
                 </tr>
-                <?php 
-                        } 
-                    }
-                ?>
+                <?php } ?>
             </tbody>
         </table>
     </div>
     <script>
-        $('#users').addClass('active');
+        $('#scoreboard').addClass('active');
     </script>
 </body>
 </html>

@@ -13,7 +13,9 @@
         $sql = "UPDATE users SET username='$username', email='$email', affiliation='$affiliation'
                 WHERE id_user='$id'";
         if($conn->query($sql)){
-            header("location:.");
+            // header("location:.");
+            $data = array("update" => true);
+            echo json_encode($data);
             die();
         }
         else{
@@ -28,30 +30,37 @@
         $password_db = $result->fetch_assoc()['password'];
 
         if($password_db == $confirm_password){
-            echo "ok";    
              $sql = "UPDATE users SET username='$username', password='$new_password' ,email='$email', 
                      affiliation='$affiliation' WHERE id_user='$id'";
              if($conn->query($sql)){
-                 header("location:.");
-                 die();
+                //  header("location:.");
+                $data = array("update" => true);
+                echo json_encode($data);
+                die();
              }
              else{
-                 echo mysqli_error($conn);
-                 die();
+                echo mysqli_error($conn);
+                die();
              }
         }
         else{
             $_SESSION['error'] = "Password doesnt match";
-            header("location:.");
+            $data = array("update" => false);
+            echo json_encode($data);
+            // header("location:.");
         }
     }
 
     if(empty($_POST['confirm_password']) && !empty($_POST['new_password'])){
-        $_SESSION['error'] = "Please fullfil the password requirement";
-        header("location:.");
+        // $_SESSION['error'] = "Please fullfil the password requirement";
+        $data = array("update" => false);
+        echo json_encode($data);
+        // header("location:.");
     }
 
     if(!empty($_POST['confirm_password']) && empty($_POST['new_password'])){
-        $_SESSION['error'] = "Please fullfil the password requirement";
-        header("location:.");
+        // $_SESSION['error'] = "Please fullfil the password requirement";
+        $data = array("update" => false);
+        echo json_encode($data);
+        // header("location:.");
     }
