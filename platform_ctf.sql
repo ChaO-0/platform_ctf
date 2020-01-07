@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Dec 21, 2019 at 10:13 AM
+-- Generation Time: Jan 07, 2020 at 08:50 AM
 -- Server version: 5.7.24
 -- PHP Version: 7.2.11
 
@@ -67,8 +67,7 @@ CREATE TABLE `challenges` (
 
 INSERT INTO `challenges` (`id_chall`, `title`, `descript`, `id_category`, `flag`, `hint`, `poin`, `status`) VALUES
 (1, 'Free Flag', '<p>Selamat Datang<br></p>', 5, 'KCTF{ini_free_flag}', '', 100, 1),
-(2, 'awn', '<p>Gak tau males, pengen PWN<br></p>', 1, 'KCTF{selamat_d4tang_pl4y3r}', '', 1, 1),
-(3, 'asdkljalskd', '<b>sdas </b><i>nama <u>under</u></i><br><b></b>', 5, 'asdasd', 'asdasd', 103, 1);
+(2, 'awn', '<p>Gak tau males, pengen PWN<br></p>', 1, 'KCTF{selamat_d4tang_pl4y3r}', '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -87,7 +86,28 @@ CREATE TABLE `files` (
 --
 
 INSERT INTO `files` (`id_file`, `id_chall`, `file_name`) VALUES
-(1, 2, 'photo6327898806552734212.jpg');
+(1, 2, 'photo6327898806552734212.jpg'),
+(2, 2, 'SetupProd_OffScrub.exe'),
+(4, 2, 'f.txt');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hint`
+--
+
+CREATE TABLE `hint` (
+  `id_hint` int(11) NOT NULL,
+  `id_chall` int(11) NOT NULL,
+  `hint` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `hint`
+--
+
+INSERT INTO `hint` (`id_hint`, `id_chall`, `hint`) VALUES
+(1, 2, '<p>Hint<br></p>');
 
 -- --------------------------------------------------------
 
@@ -172,6 +192,12 @@ ALTER TABLE `files`
   ADD PRIMARY KEY (`id_file`);
 
 --
+-- Indexes for table `hint`
+--
+ALTER TABLE `hint`
+  ADD PRIMARY KEY (`id_hint`);
+
+--
 -- Indexes for table `notification`
 --
 ALTER TABLE `notification`
@@ -203,13 +229,19 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `challenges`
 --
 ALTER TABLE `challenges`
-  MODIFY `id_chall` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_chall` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `files`
 --
 ALTER TABLE `files`
-  MODIFY `id_file` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id_file` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `hint`
+--
+ALTER TABLE `hint`
+  MODIFY `id_hint` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `notification`
