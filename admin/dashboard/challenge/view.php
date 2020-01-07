@@ -119,7 +119,21 @@
                                     </form>
                                 </div>
                                 <div class="tab-pane fade" id="hint" role="tabpanel" aria-labelledby="hint-tab">
-                                    Sed sed metus vel lacus hendrerit tempus. Sed efficitur velit tortor, ac efficitur est lobortis quis. Nullam lacinia metus erat, sed fermentum justo rutrum ultrices. Proin quis iaculis tellus. Etiam ac vehicula eros, pharetra consectetur dui. Aliquam convallis neque eget tellus efficitur, eget maximus massa imperdiet. Morbi a mattis velit. Donec hendrerit venenatis justo, eget scelerisque tellus pharetra a.
+                                <form action="add_hint.php" method="post" >
+                                        <div class="form-group row mb-4">
+                                            <input type="hidden" name="id_chall" value="<?php echo $id?>">
+                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Hint</label>
+                                            <div class="col-sm-12 col-md-7">
+                                                <textarea class="summernote-simple" name="hint_desc"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row mb-4">
+                                            <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
+                                            <div class="col-sm-12 col-md-7">
+                                                <button class="btn btn-primary">Add Hint</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                                 <div class="tab-pane fade" id="file" role="tabpanel" aria-labelledby="file-tab2">
                                     <form action="upload.php" method="POST" enctype="multipart/form-data">
@@ -182,7 +196,7 @@
                     var fileName = $(this).val().split("\\").pop();
                     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
                 });
-                $("#liHint").hide();
+                // $("#liHint").hide();
 
             </script>
     </body>
