@@ -85,6 +85,14 @@ table{
     margin-top: 20px;
 }
 
+.bud{
+    padding-top: 30px;
+}
+
+#chart{
+    height: 200px;
+}
+
 @media only screen and (max-width: 768px) {
     /* For mobile phones: */
     .card-mobile{

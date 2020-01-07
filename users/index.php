@@ -22,6 +22,7 @@
         <table class="striped centered" id="users_table">
             <?php require_once 'users.php'; ?>
         </table>
+        <br>
         <ul class="pagination center-align">
             <?php for($i = 1; $i <= $pages; $i++){ ?>
             <li class="waves-effect teal accent-4 <?php if($page == $i){ echo "active"; } ?> paging"><a><?php echo $i ?></a></li>

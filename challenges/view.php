@@ -40,7 +40,7 @@
     ?>
     <a href="#<?php echo "chall" . $row['id_chall']; ?>" class="modal-trigger">
         <div class="chall-card">
-            <div class="card blue-grey darken-1 <?php while($data = $solved->fetch_assoc()){if($data['status'] == 1)echo "teal accent-3"; } ?>">
+            <div id="<?php echo "card" . $row['id_chall']; ?>" class="card blue-grey darken-1 <?php while($data = $solved->fetch_assoc()){if($data['status'] == 1)echo "teal accent-3"; } ?>">
                 <div class="card-content white-text">
                     <span class="card-title"><?php echo $row['title']; ?></span>
                     <p><?php echo $row['poin']; ?></p>

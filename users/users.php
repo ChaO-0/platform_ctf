@@ -8,7 +8,7 @@
 <tbody>
     <?php
         require_once '../template/connection.php';
-        $limit = 2;
+        $limit = 100;
         $page = isset($_GET['page']) ? $_GET['page'] : 1;
         $start = $page > 1 ? ($page * $limit) - $limit : 0;
         $no = 1;
