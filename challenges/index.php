@@ -55,7 +55,10 @@
             $user = $_SESSION['id'];
             $findsolve = "SELECT id_user, status FROM `solves` WHERE id_chall='$id' AND id_user='$user' AND status=1";
             $solved = $conn->query($findsolve);
-            
+            $get_hint = "SELECT id_hint FROM hint WHERE id_chall = '$id'";
+            $hints = $conn->query($get_hint);
+            $get_file = "SELECT file_name FROM files WHERE id_chall='$id'";
+            $files = $conn->query($get_file);
     ?>
     <div id="<?php echo "chall" . $row['id_chall']; ?>" class="modal">
         <div class="modal-content">
@@ -64,11 +67,35 @@
                 <?php echo $row['descript']; ?>
             </div>
             <br>
-            <div class="row">
+            <?php
+                if($files->num_rows > 0){
+            ?>
+            <div class="row files">
+            <?php 
+                    for($i = 0; $i < $files->num_rows; $i++){
+            ?>
                 <div class="col l3">
-                    <button class="btn">File</button>
+                    <a href="uploads/<?php while($file = $files->fetch_assoc()){ echo $file['file_name']; break; } ?>" class="btn modal-trigger" download>Files</a>
+                </div>
+            <?php
+                    }
+                    ?>
+                    </div>
+            <?php
+                }
+            ?>
+            <?php 
+                if($hints->num_rows > 0){ 
+                    for($i = 0; $i < $hints->num_rows; $i++){
+            ?>
+            <div class="row hints">
+                <div class="col s12">
+                    <a href="#hint<?php while($hint = $hints->fetch_assoc()){ echo $hint['id_hint'];break; } ?>" class="btn modal-trigger">Hint</a>
                 </div>
             </div>
+            <?php }
+                }
+            ?>
             <div class="input-field">
                 <input type="text" class="flag-val" id="<?php echo 'flag' . $row['id_chall']; ?>">
                 <label for="flag">Flag</label>
@@ -82,7 +109,23 @@
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
         </div>
     </div>
-    <?php }?>
+    <?php 
+        }
+        $sql = "SELECT id_hint, hint FROM hint";
+        $result = $conn->query($sql);
+        // print_r($result);
+        while($row = $result->fetch_assoc()){
+    ?>
+    <div id="hint<?php echo $row['id_hint']; ?>" class="modal">
+        <div class="modal-content">
+            <h4>This is a hint for you !</h4>
+            <p><?php echo $row['hint']; ?></p>
+            </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">I Get It</a>
+        </div>
+    </div>
+    <?php } ?>
     <script>
         $(document).ready(function(){
             $('.sidenav').sidenav();

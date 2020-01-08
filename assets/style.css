@@ -89,6 +89,14 @@ table{
     padding-top: 30px;
 }
 
+.hints a{
+    width: 100%;
+}
+
+.files a{
+    width: 100%;
+}
+
 #chart{
     height: 200px;
 }

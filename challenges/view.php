@@ -14,7 +14,8 @@
         $result = $conn->query($sql);
         while($row = $result->fetch_assoc()){
             $id = $row['id_chall'];
-            $findsolve = "SELECT id_user, status FROM `solves` WHERE id_chall='$id' AND id_user='$user' AND status=1";
+            $findsolve = "SELECT id_user, status FROM `solves`
+                        WHERE id_chall='$id' AND id_user='$user' AND status=1";
             $solved = $conn->query($findsolve);
 ?>    
     <a href="#<?php echo "chall" . $row['id_chall']; ?>" class="modal-trigger">

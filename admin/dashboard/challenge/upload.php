@@ -1,6 +1,6 @@
 <?php
     include '../template/root.php';
-    define("FILEROOT", $_SERVER['DOCUMENT_ROOT'] ."\platform_ctf");
+    define("FILEROOT", $_SERVER['DOCUMENT_ROOT'] ."/platform_ctf");
     $id_chall = $_POST['id_chall'];
     $destination = FILEROOT."/challenges/uploads/";
     $target_file = $destination.basename($_FILES["fileToUp"]["name"]);

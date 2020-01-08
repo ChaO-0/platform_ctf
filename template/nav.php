@@ -36,19 +36,19 @@
 
     <ul class="sidenav" id="mobile">
         <li><a href="#">Notifications</a></li>
-        <li><a href="#">Users</a></li>
-        <li><a href="#">Scoreboard</a></li>
-        <li><a href="#">Challenges</a></li>
+        <li><a href="/platform_ctf/users">Users</a></li>
+        <li><a href="/platform_ctf/scoreboard">Scoreboard</a></li>
+        <li><a href="/platform_ctf/challenges">Challenges</a></li>
         <?php 
             if($check != 1){
         ?>
         <li class="divider" tabindex="-1"></li>
-        <li><a href="#">Login</a></li>
-        <li><a href="#">Register</a></li>
+        <li><a href="/platform_ctf/login">Login</a></li>
+        <li><a href="/platform_ctf/register">Register</a></li>
         <?php }
             else{
         ?>
         <li class="divider" tabindex="-1"></li>
-        <li><a href="#">Logout</a></li>
+        <li><a href="/platform_ctf/logout">Logout</a></li>
         <?php } ?>
     </ul>
