@@ -63,6 +63,12 @@
             <div class="left-align">
                 <?php echo $row['descript']; ?>
             </div>
+            <br>
+            <div class="row">
+                <div class="col l3">
+                    <button class="btn">File</button>
+                </div>
+            </div>
             <div class="input-field">
                 <input type="text" class="flag-val" id="<?php echo 'flag' . $row['id_chall']; ?>">
                 <label for="flag">Flag</label>
@@ -103,36 +109,36 @@
                     $(this).closest('.modal-content').children('.flag-submit').click();
                 }
             });
-            $('.flag-submit').click(function(){    
-                let input_id = $(this).children('button').val();
+        });
+        $('.flag-submit').click(function(){
+            let input_id = $(this).children('button').val();
                 let flag = ($("#flag" + input_id).val());
                 var values = {
                    'id' : input_id,
                    'flag' : flag
                 };
-                $.ajax({
-                    type: "POST",
-                    url: "solve.php",
-                    data: values,
-                    success: function(response){
-                        let result = JSON.parse(response);
-                        if(result['message'] == "Solved"){
-                            let message = result['message'];
-                            M.toast({html: message, displayLength: 1500, outDuration: 1000, classes: 'rounded teal accent-3'});
-                            $('#card' + input_id).addClass('teal accent-3').removeClass('blue-grey darken-1')
-                        }
-                        else if(result['message'] == "You already solved this challenge"){
-                            let message = result['message'];
-                            M.toast({html: message, displayLength: 1500, outDuration: 1000, classes: 'rounded teal accent-3'});
-                        }
-                        else{
-                            let message = result['message'];
-                            M.toast({html: message, displayLength: 1500, outDuration: 1000, classes: 'rounded red accent-3'});    
-                        }
+            $.ajax({
+                type: "POST",
+                url: "solve.php",
+                data: values,
+                success: function (response) {
+                    let result = JSON.parse(response);
+                    if(result['message'] == "Solved"){
+                        let message = result['message'];
+                        M.toast({html: message, displayLength: 1500, outDuration: 1000, classes: 'rounded teal accent-3'});
+                        $('#card' + input_id).addClass('teal accent-3').removeClass('blue-grey darken-1');
                     }
-                })
-            })
-        });
+                    else if(result['message'] == "You already solved this challenge"){
+                        let message = result['message'];
+                        M.toast({html: message, displayLength: 1500, outDuration: 1000, classes: 'rounded teal accent-3'});
+                    }
+                    else{
+                        let message = result['message'];
+                        M.toast({html: message, displayLength: 1500, outDuration: 1000, classes: 'rounded red accent-3'});    
+                    }
+                }
+            });
+        })
     </script>
 </body>
 </html>

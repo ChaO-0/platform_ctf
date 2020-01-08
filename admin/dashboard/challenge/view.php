@@ -37,7 +37,7 @@
                         include '../template/root.php';
                         $id=$_GET["id"];
                         $id_cate=$_GET["id_cate"];
-                        $read_chall="SELECT challenges.id_chall ,challenges.title,challenges.descript,category.id_category, category.category, challenges.flag,challenges.hint, challenges.poin 
+                        $read_chall="SELECT challenges.id_chall ,challenges.title,challenges.descript,category.id_category, category.category, challenges.flag, challenges.poin 
                                     FROM challenges
                                     INNER JOIN category ON challenges.id_category =category.id_category 
                                     WHERE id_chall = $id";

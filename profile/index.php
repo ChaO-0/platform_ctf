@@ -19,7 +19,9 @@
         require_once '../template/nav.php';
         require_once '../template/connection.php';
         $id = $_SESSION['id'];
-        $sql = "SELECT users.username, challenges.id_chall, challenges.title, category.category , challenges.poin FROM solves 
+        $sql = "SELECT users.username, challenges.id_chall, challenges.title, 
+                category.category , challenges.poin, solves.created_at
+                FROM solves 
                 INNER JOIN challenges ON solves.id_chall = challenges.id_chall 
                 INNER JOIN category ON category.id_category = challenges.id_category 
                 INNER JOIN users ON users.id_user = solves.id_user
@@ -57,6 +59,7 @@
                     <th>Challenge</th>
                     <th>Category</th>
                     <th>Score</th>
+                    <th>Time</th>
                 </tr>
             </thead>
             <tbody>
@@ -68,6 +71,7 @@
                     <td><?php echo $row['title']; ?></td>
                     <td><?php echo $row['category']; ?></td>
                     <td><?php echo $row['poin']; ?></td>
+                    <td><?php echo date("M dS, H:i:s", strtotime($row['created_at'])); ?></td>
                 </tr>
                 <?php } ?>
             </tbody>
@@ -79,33 +83,52 @@
         let labels = new Array();
         let series = new Array();
         <?php
-            $sql = "SELECT users.username, challenges.id_chall, challenges.title, category.category , challenges.poin 
-                    FROM solves 
-                    INNER JOIN challenges ON solves.id_chall = challenges.id_chall 
-                    INNER JOIN category ON category.id_category = challenges.id_category 
-                    INNER JOIN users ON users.id_user = solves.id_user
-                    WHERE users.id_user=$id 
-                    GROUP BY category.category";
+            $temp_sql = "SELECT id_category, category FROM category ORDER BY id_category ASC";
+            $count_category = $conn->query($temp_sql);
+            $categories = array();
+            while($row = $count_category->fetch_assoc()){
+                array_push($categories, $row['category']);
+            }
+
+            $sql = "SELECT users.username, challenges.id_chall, challenges.title, ";
+            $id_category = 1;
+            foreach($categories as $category){
+                $sql .= "COUNT(IF(category.id_category = $id_category, 1, NULL)) '$category', ";
+                $id_category++;
+            }
+            $sql .= "challenges.poin FROM solves
+                    INNER JOIN challenges
+                    ON solves.id_chall = challenges.id_chall
+                    INNER JOIN category
+                    ON category.id_Category = challenges.id_category
+                    INNER JOIN users
+                    ON users.id_user = solves.id_user
+                    WHERE users.id_user = $id AND solves.status = 1";
+                    
             $labels = $conn->query($sql);
+
             while($row = $labels->fetch_array()){
         ?>
-            labels.push('<?php echo $row['category']; ?>');
+            <?php foreach($categories as $category){
+                if($row[$category] > 0){ ?>
+                labels.push("<?php echo $category; ?>");
+            <? }
+                }?>
         <?php    
             }
-            $sql_bud = "SELECT solves.id_user, category.category, SUM(challenges.poin) as score
-                        FROM solves
-                        INNER JOIN challenges
-                        ON solves.id_chall = challenges.id_chall
-                        INNER JOIN category
-                        ON category.id_category = challenges.id_category
-                        WHERE solves.id_user=$id AND solves.status=1
-                        GROUP BY category";
+            $sql_bud = $sql;
             $series = $conn->query($sql_bud);
             while($row = $series->fetch_array()){
+                foreach($categories as $category){
+                    if($row[$category] > 0){
         ?>
-            series.push('<?php echo $row['score']; ?>');
+            series.push('<?php echo $row[$category]; ?>');
+            // console.log(series);
             series = series.map(Number);
-        <?php } ?>
+        <?php }
+            }
+        } 
+        ?>
         let options = {
             chart: {
                 type: 'pie'

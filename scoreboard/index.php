@@ -37,7 +37,7 @@
                             INNER JOIN challenges ON solves.id_chall = challenges.id_chall 
                             WHERE solves.status = 1 
                             GROUP BY users.id_user 
-                            ORDER BY challenges.poin DESC";
+                            ORDER BY poin DESC";
                     $result = $conn->query($sql);
                     while($row = $result->fetch_assoc()){
                 ?>
