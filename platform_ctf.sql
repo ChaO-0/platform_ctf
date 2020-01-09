@@ -42,7 +42,8 @@ INSERT INTO `category` (`id_category`, `category`) VALUES
 (2, 'REVERSE'),
 (3, 'CRYPTO'),
 (4, 'FORENSIC'),
-(5, 'MISC');
+(5, 'WEB')
+(6, 'MISC');
 
 -- --------------------------------------------------------
 
