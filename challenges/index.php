@@ -75,7 +75,7 @@
                     for($i = 0; $i < $files->num_rows; $i++){
             ?>
                 <div class="col l3">
-                    <a href="uploads/<?php while($file = $files->fetch_assoc()){ echo $file['file_name']; break; } ?>" class="btn modal-trigger" download>Files</a>
+                    <a href="uploads/<?php while($file = $files->fetch_assoc()){ echo $file['file_name']; break; } ?>" class="btn-large modal-trigger" download>Files</a>
                 </div>
             <?php
                     }

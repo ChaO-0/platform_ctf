@@ -17,40 +17,42 @@
     <?php 
         require_once "../template/nav.php"; 
         require_once "../template/connection.php";
+        
+        $sql = "SELECT title, description FROM `notification`";
+        $result = $conn->query($sql);
+        $no = 1
     ?>
     <div class="container">
 
         <div class="row">
+            <?php
+                if($result->num_rows > 0){ 
+                while($row = $result->fetch_assoc()){
+            ?>
             <div class="col s12 m12">
                 <div class="card">
                     <div class="card-content ">
-                        <span class="card-title">1. Notif</span>
-                        <p>I am a very simple card. I am good at containing small bits of information.
-                        I am convenient because I require little markup to use effectively.</p>
+                        <span class="card-title"> <?php echo $no++ . ". " . $row['title']; ?></span>
+                        <?php echo $row['description']; ?>
                     </div>
                 </div>
             </div>
+            <?php } 
+                }else{
+            ?>
+            <div class="col s12 m12">
+                <div class="card">
+                    <div class="card-content ">
+                        <span class="card-title">NO NOTIFICATIONS YET</span>
+                    </div>
+                </div>
+            </div>
+            <?php } ?>
         </div>
 
     </div>
     <script>
-        $(document).ready(function(){
-            $('#users').addClass('active');
-            $('.paging').click(function(){
-                let page = $(this).text();
-                $.ajax({
-                    type: "get",
-                    url: "users.php",
-                    data: {page : page},
-                    dataType: "html",
-                    success: function (response) {
-                        $("#users_table").html(response);
-                    }
-                });
-                $(".paging").removeClass("active");
-                $(this).addClass("active");
-            })
-        })
+        $('#notification').addClass('active');
     </script>
 </body>
 </html>

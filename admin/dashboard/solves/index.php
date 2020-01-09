@@ -43,8 +43,11 @@
               $pages = ceil($total / $limit);
               
               $read_solves="SELECT users.username, challenges.title, user_flag,created_at, solves.status 
-                            FROM solves INNER JOIN users ON users.id_user = solves.id_user 
-                            INNER JOIN challenges ON challenges.id_chall = solves.id_chall
+                            FROM solves 
+                            INNER JOIN users 
+                            ON users.id_user = solves.id_user 
+                            INNER JOIN challenges 
+                            ON challenges.id_chall = solves.id_chall
                             LIMIT $start,$limit";
               $views = $conn -> query($read_solves);
               $no = $start+ 1;

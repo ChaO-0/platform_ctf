@@ -26,7 +26,7 @@
                 ?>
             </ul>
             <ul class="left hide-on-med-and-down">
-                <li><a href="#">Notifications</a></li>
+                <li id="notification"><a href="/platform_ctf/notification">Notifications</a></li>
                 <li id="users"><a href="/platform_ctf/users">Users</a></li>
                 <li id="scoreboard"><a href="/platform_ctf/scoreboard">Scoreboard</a></li>
                 <li id="challenges"><a href="/platform_ctf/challenges">Challenges</a></li>

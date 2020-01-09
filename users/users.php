@@ -23,7 +23,7 @@
     ?>
     <tr>
         <td><?php echo $no++; ?></td>
-        <td><?php echo $row['username']; ?></td>
+        <td><a href="/platform_ctf/profile/user.php?id=<?php echo $row['id_user']; ?>"><?php echo $row['username']; ?></a></td>
         <td><?php echo $row['affiliation']; ?></td>
     </tr>
     <?php 
