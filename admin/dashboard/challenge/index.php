@@ -20,6 +20,7 @@
           $chall='./';
           $notif='../notification/';
           $logout='../';
+          $solve='../solves';
           include '../template/nav.php';
           
         ?>

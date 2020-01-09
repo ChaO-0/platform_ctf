@@ -19,6 +19,7 @@
           $chall='../challenge/';
           $notif='../notification/';
           $logout='../';
+          $solve='../solves';
           include '../template/nav.php';
         ?>
 
