@@ -121,7 +121,7 @@
                                 </div>
                                 <div class="tab-pane fade" id="hint" role="tabpanel" aria-labelledby="hint-tab">
                                     <?php
-                                        $sqlHint = "SELECT hint FROM hint where id_chall = $id";
+                                        $sqlHint = "SELECT id_hint,hint FROM hint where id_chall = $id";
                                         $viewHint= $conn->query($sqlHint);
                                     ?>
                                     <p>                                    
@@ -133,8 +133,10 @@
                                         <?php while($readHint = $viewHint ->fetch_array(MYSQLI_ASSOC)){ ?>
                                             <div class="alert alert-info" role="alert">
                                                 <?php echo $readHint['hint'] ?>
+                                                <span><a href="<?php echo 'deleteHint.php?idHint='.$readHint['id_hint']."&&id=$id&&id_cate=$id_cate"; ?>" class=" btn btn-icon icon-left btn-danger btn_chall"><i class="fas fa-trash-alt"></i> Delete</a></span>
                                             </div>
                                         <?php }?>
+                                        
                                     </div>
                                     <form action="add_hint.php" method="post" >
                                         <div class="form-group row mb-2">

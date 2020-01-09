@@ -78,12 +78,7 @@
                                             <input type="text" class="form-control" name="flag">
                                         </div>
                                     </div>
-                                    <div class="form-group row mb-4">
-                                        <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Hint</label>
-                                        <div class="col-sm-12 col-md-7">
-                                            <input type="text" class="form-control" name="hint">
-                                        </div>
-                                    </div>
+                                
                                     <div class="form-group row mb-4">
                                         <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Poin</label>
                                         <div class="col-sm-12 col-md-7">

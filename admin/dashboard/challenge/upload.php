@@ -4,6 +4,7 @@
     $id_cate = $_POST['id_cate'];
     define("FILEROOT", $_SERVER['DOCUMENT_ROOT'] ."/platform_ctf");
     $id_chall = $_POST['id_chall'];
+    $id_cate = $_POST['id_cate'];
     $destination = FILEROOT."/challenges/uploads/";
     $target_file = $destination.basename($_FILES["fileToUp"]["name"]);
     $file_name = $_FILES["fileToUp"]["name"];
