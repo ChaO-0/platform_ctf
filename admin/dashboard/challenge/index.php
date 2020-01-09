@@ -104,7 +104,7 @@
           Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
         </div>
         <div class="footer-right">
-          
+          <button id="toastr-2">HAI</button>
         </div>
       </footer>
     </div>
@@ -118,13 +118,24 @@
     ?>
     <script>
       
-      alert("<?php echo $success;?> ");
+      $("#toastr-2").click(function() {
+                iziToast.success({
+                title: 'SUKSES !',
+                message: '<?php echo $success ?>',
+                position: 'topRight'
+                });
+                });
+      $("#toastr-2").click();
       
     </script>
     <?php  
       unset($_SESSION['success']);
     } ?>
 
-  
+            <script>
+                // Add the following code if you want the name of the file appear on select
+                $("#toastr-2").hide();
+              
+            </script>
 </body>
 </html>

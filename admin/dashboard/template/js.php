@@ -12,6 +12,7 @@
     <script src="<?php echo $pre; ?>assets/modules/codemirror/lib/codemirror.js"></script>
     <script src="<?php echo $pre; ?>assets/modules/codemirror/mode/javascript/javascript.js"></script>
     <script src="<?php echo $pre; ?>assets/modules/jquery-selectric/jquery.selectric.min.js"></script>
+    <script src="<?php echo $pre; ?>assets/modules/izitoast/js/iziToast.min.js"></script>
 
     <!-- Page Specific JS File -->
     <script src="<?php echo $pre; ?>assets/js/page/index-0.js"></script>

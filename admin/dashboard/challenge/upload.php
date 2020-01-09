@@ -1,5 +1,7 @@
 <?php
     include '../template/root.php';
+    session_start();
+    $id_cate = $_POST['id_cate'];
     define("FILEROOT", $_SERVER['DOCUMENT_ROOT'] ."/platform_ctf");
     $id_chall = $_POST['id_chall'];
     $destination = FILEROOT."/challenges/uploads/";
@@ -19,6 +21,8 @@
         if($conn -> query($sql)){
             if(move_uploaded_file($file_tmp,$target_file)){
                 echo "BERHASIL!";
+                $_SESSION['success']="Berhasil Upload ".$file_name;
+                header("location:./view.php?id=$id_chall&&id_cate=$id_cate");
             }
             else{
                 echo "gagal";

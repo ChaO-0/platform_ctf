@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="<?php echo $pre;?>assets/modules/codemirror/lib/codemirror.css">
     <link rel="stylesheet" href="<?php echo $pre;?>assets/modules/codemirror/theme/duotone-dark.css">
     <link rel="stylesheet" href="<?php echo $pre;?>assets/modules/jquery-selectric/selectric.css">
+    <link rel="stylesheet" href="<?php echo $pre;?>assets/modules/izitoast/css/iziToast.min.css">
 
     <!-- Template CSS -->
     <link rel="stylesheet" href="<?php echo $pre;?>assets/css/custom.css">

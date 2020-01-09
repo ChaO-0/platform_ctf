@@ -72,7 +72,7 @@
                                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Title</label>
                                             <div class="col-sm-12 col-md-7">
                                                 <input type="hidden" name="id_chall" value="<?php echo $id?>">
-                                                
+                                                <input type="hidden" name="id_cate" value="<?php echo $id_cate?>">
                                                 <input value="<?php echo $result['title'];?>" type="text" class="form-control" name="title">
                                             </div>
                                         </div>
@@ -138,6 +138,7 @@
                                     <form action="add_hint.php" method="post" >
                                         <div class="form-group row mb-2">
                                             <input type="hidden" name="id_chall" value="<?php echo $id?>">
+                                            <input type="hidden" name="id_cate" value="<?php echo $id_cate; ?>">
                                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Hint</label>
                                             <div class="col-sm-12 col-md-7">
                                                 <textarea class="summernote-simple" name="hint_desc"></textarea>
@@ -166,6 +167,7 @@
                                             <?php while($readfiles = $viewfiles ->fetch_array(MYSQLI_ASSOC)){ ?>
                                                 <div class="alert alert-info" role="alert">
                                                     <a href="../../../challenges/uploads/<?php echo $readfiles['file_name'] ?>" target="_blank"><?php echo $readfiles['file_name'] ?></a>
+                                                    <span><a href="<?php echo 'deleteFile.php?name='.$readfiles['file_name']."&&id=$id&&id_cate=$id_cate"; ?>" class="float-right btn btn-icon icon-left btn-danger btn_chall"><i class="fas fa-trash-alt"></i> Delete</a></span>
                                                 </div>
                                             <?php }?>
                                         </div>
@@ -184,6 +186,7 @@
                                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
                                             <div class="col-sm-12 col-md-7">
                                                 <input type="hidden" name="id_chall" value="<?php echo $id; ?>">
+                                                <input type="hidden" name="id_cate" value="<?php echo $id_cate; ?>">
                                                 <button class="btn btn-primary">Upload</button>
                                             </div>
                                         </div>
@@ -202,7 +205,7 @@
                 Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
                 </div>
                 <div class="footer-right">
-                
+                    <button id="toastr-2">HAI</button>
                 </div>
             </footer>
             </div>
@@ -216,7 +219,14 @@
             ?>
             <script>
             
-            alert("<?php echo $success;?> ");
+            $("#toastr-2").click(function() {
+                iziToast.success({
+                title: 'SUKSES !',
+                message: '<?php echo $success ?>',
+                position: 'topRight'
+                });
+                });
+            $("#toastr-2").click();
             
             </script>
             <?php  
@@ -225,12 +235,11 @@
 
             <script>
                 // Add the following code if you want the name of the file appear on select
+                $("#toastr-2").hide();
                 $(".custom-file-input").on("change", function() {
                     var fileName = $(this).val().split("\\").pop();
                     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
                 });
-                // $("#liHint").hide();
-
             </script>
     </body>
 </html>
