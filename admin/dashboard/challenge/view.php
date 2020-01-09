@@ -119,8 +119,24 @@
                                     </form>
                                 </div>
                                 <div class="tab-pane fade" id="hint" role="tabpanel" aria-labelledby="hint-tab">
-                                <form action="add_hint.php" method="post" >
-                                        <div class="form-group row mb-4">
+                                    <?php
+                                        $sqlHint = "SELECT hint FROM hint where id_chall = $id";
+                                        $viewHint= $conn->query($sqlHint);
+                                    ?>
+                                    <p>                                    
+                                        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                            View Hint
+                                        </button>
+                                    </p>
+                                    <div class="collapse" id="collapseExample">
+                                        <?php while($readHint = $viewHint ->fetch_array(MYSQLI_ASSOC)){ ?>
+                                            <div class="alert alert-info" role="alert">
+                                                <?php echo $readHint['hint'] ?>
+                                            </div>
+                                        <?php }?>
+                                    </div>
+                                    <form action="add_hint.php" method="post" >
+                                        <div class="form-group row mb-2">
                                             <input type="hidden" name="id_chall" value="<?php echo $id?>">
                                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Hint</label>
                                             <div class="col-sm-12 col-md-7">
@@ -134,8 +150,25 @@
                                             </div>
                                         </div>
                                     </form>
+                                
                                 </div>
                                 <div class="tab-pane fade" id="file" role="tabpanel" aria-labelledby="file-tab2">
+                                    <?php
+                                            $sqlfiles = "SELECT file_name FROM files where id_chall = $id";
+                                            $viewfiles= $conn->query($sqlfiles);
+                                        ?>
+                                        <p>                                    
+                                            <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                                View files
+                                            </button>
+                                        </p>
+                                        <div class="collapse" id="collapseExample">
+                                            <?php while($readfiles = $viewfiles ->fetch_array(MYSQLI_ASSOC)){ ?>
+                                                <div class="alert alert-info" role="alert">
+                                                    <a href="../../../challenges/uploads/<?php echo $readfiles['file_name'] ?>" target="_blank"><?php echo $readfiles['file_name'] ?></a>
+                                                </div>
+                                            <?php }?>
+                                        </div>
                                     <form action="upload.php" method="POST" enctype="multipart/form-data">
                                         <div class="form-group row mb-4">
                                             <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3"></label>
