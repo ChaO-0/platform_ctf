@@ -65,7 +65,9 @@
                                 <td><?php echo ($view_users['role']==1?"Admin" : "Users");?></td>
                                 <td><?php echo ($view_users['status']==1?"Aktif" : "Banned");?></td>
                                 <td>
-                                <a href="#" class="btn btn-icon icon-left btn-primary"><i class="far fa-edit"></i> Edit</a>
+                                  <a href="statusUpdate.php?id=<?php echo ($view_users['id_user'])."&&stat=".$view_users['status'];?>" class="btn btn-icon icon-left <?php echo ($view_users['status']==1?"btn-danger" : "btn-success");?>">
+                                    <?php echo ($view_users['status']==1?"BAN" : "AKTIFKAN");?>
+                                  </a>
                                 </td>
                               </tr>
                             <?php }?>
@@ -82,15 +84,38 @@
           Copyright &copy; 2018 <div class="bullet"></div> Design By <a href="https://nauval.in/">Muhamad Nauval Azhar</a>
         </div>
         <div class="footer-right">
-          
+          <button id="toastr-2">HAI</button>
         </div>
       </footer>
     </div>
   </div>
 
-  <?php
-    include '../template/js.php';
-  ?>
+            <?php
+            include '../template/js.php';
 
+            if(isset($_SESSION['success'])){
+            $success = $_SESSION['success'];
+            ?>
+            <script>
+            
+            $("#toastr-2").click(function() {
+                iziToast.success({
+                title: 'SUKSES !',
+                message: '<?php echo $success ?>',
+                position: 'topRight'
+                });
+                });
+            $("#toastr-2").click();
+            
+            </script>
+            <?php  
+            unset($_SESSION['success']);
+            } ?>
+
+            <script>
+                // Add the following code if you want the name of the file appear on select
+                $("#toastr-2").hide();
+                });
+            </script>
 </body>
 </html>
