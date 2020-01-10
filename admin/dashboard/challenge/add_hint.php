@@ -1,9 +1,9 @@
 <?php
     include '../template/root.php';
     session_start();
-    $id_chall = $_POST['id_chall'];
-    $id_cate = $_POST['id_cate'];
-    $hint_desc = $_POST['hint_desc'];
+    $id_chall = $conn->real_escape_string($_POST['id_chall']);
+    $id_cate = $conn->real_escape_string($_POST['id_cate']);
+    $hint_desc = $conn->real_escape_string($_POST['hint_desc']);
 
     $sql = "INSERT INTO hint(id_chall, hint) VALUES ('$id_chall','$hint_desc')";
     if($conn -> query($sql)){

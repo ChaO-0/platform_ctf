@@ -48,6 +48,7 @@
                             ON users.id_user = solves.id_user 
                             INNER JOIN challenges 
                             ON challenges.id_chall = solves.id_chall
+                            ORDER BY created_at DESC
                             LIMIT $start,$limit";
               $views = $conn -> query($read_solves);
               $no = $start+ 1;

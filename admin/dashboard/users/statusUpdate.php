@@ -9,7 +9,7 @@
         SET status = 0 WHERE id_user = $id";
             if($conn->query($edit)){
                 // echo "Berhasil Update";
-                $_SESSION['success']="Berhasil Banned";
+                $_SESSION['success']="Banned";
                 header("location:./");
             }
             else{
@@ -21,7 +21,7 @@
         SET status = 1 WHERE id_user = $id";
             if($conn->query($edit)){
                 // echo "Berhasil Update";
-                $_SESSION['success']="Berhasil Aktivasi";
+                $_SESSION['success']="Activated";
                 header("location:./");
             }
             else{

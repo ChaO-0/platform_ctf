@@ -37,6 +37,7 @@
               $read_users="SELECT * from users";
               $view = $conn -> query($read_users);
               $no = 1;
+              $id = $_SESSION['id'];
             ?>
             <div class="card">
               <div class="card-body">
@@ -65,9 +66,19 @@
                                 <td><?php echo ($view_users['role']==1?"Admin" : "Users");?></td>
                                 <td><?php echo ($view_users['status']==1?"Aktif" : "Banned");?></td>
                                 <td>
-                                  <a href="statusUpdate.php?id=<?php echo ($view_users['id_user'])."&&stat=".$view_users['status'];?>" class="btn btn-icon icon-left <?php echo ($view_users['status']==1?"btn-danger" : "btn-success");?>">
+                                  <a href="statusUpdate.php?id=<?php echo ($view_users['id_user'])."&stat=".$view_users['status'];?>" class="btn btn-icon icon-left <?php echo ($view_users['status']==1?"btn-danger" : "btn-success");?>">
                                     <?php echo ($view_users['status']==1?"BAN" : "AKTIFKAN");?>
                                   </a>
+                                  <?php if($view_users['role'] != 1 && $view_users['status'] != 0){ ?>
+                                  <a href="roleUpdate.php?id=<?php echo $view_users['id_user'] . "&stat=" . $view_users['status']; ?>" class="btn btn-success">Make Admin</a>
+                                  <?php }
+                                        else{
+                                           if($view_users['id_user'] != $id && $view_users['status'] != 0){
+                                  ?>
+                                  <a href="roleUpdate.php?id=<?php echo $view_users['id_user'] . "&stat=" . $view_users['status']; ?>" class="btn btn-danger">UnAdmin</a>
+                                  <?php }
+                                    } 
+                                  ?>
                                 </td>
                               </tr>
                             <?php }?>
@@ -100,7 +111,7 @@
             
             $("#toastr-2").click(function() {
                 iziToast.success({
-                title: 'SUKSES !',
+                title: 'Success !',
                 message: '<?php echo $success ?>',
                 position: 'topRight'
                 });

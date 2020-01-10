@@ -1,12 +1,12 @@
 <?php
         session_start();
         include '../template/root.php';
-        $id_chall = $_POST['id_chall'];
-        $title = $_POST['title'];
-        $category = $_POST['category'];
-        $desc = $_POST['desc'];
-        $flag = $_POST['flag'];
-        $poin= $_POST['poin'];
+        $id_chall = $conn->real_escape_string($_POST['id_chall']);
+        $title = $conn->real_escape_string($_POST['title']);
+        $category = $conn->real_escape_string($_POST['category']);
+        $desc = $conn->real_escape_string($_POST['desc']);
+        $flag = $conn->real_escape_string($_POST['flag']);
+        $poin= $conn->real_escape_string($_POST['poin']);
         $status = 1;
         $edit = "UPDATE challenges 
                 SET title = '$title', descript = '$desc', id_category = '$category',

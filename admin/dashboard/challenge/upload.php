@@ -3,8 +3,8 @@
     session_start();
     $id_cate = $_POST['id_cate'];
     define("FILEROOT", $_SERVER['DOCUMENT_ROOT'] ."/platform_ctf");
-    $id_chall = $_POST['id_chall'];
-    $id_cate = $_POST['id_cate'];
+    $id_chall = $conn->real_escape_string($_POST['id_chall']);
+    $id_cate = $conn->real_escape_String($_POST['id_cate']);
     $destination = FILEROOT."/challenges/uploads/";
     $target_file = $destination.basename($_FILES["fileToUp"]["name"]);
     $file_name = $_FILES["fileToUp"]["name"];
@@ -23,7 +23,7 @@
             if(move_uploaded_file($file_tmp,$target_file)){
                 echo "BERHASIL!";
                 $_SESSION['success']="Berhasil Upload ".$file_name;
-                header("location:./view.php?id=$id_chall&&id_cate=$id_cate");
+                header("location:./view.php?id=$id_chall&id_cate=$id_cate");
             }
             else{
                 echo "gagal";
