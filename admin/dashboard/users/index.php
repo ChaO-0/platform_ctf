@@ -34,8 +34,16 @@
           <div class="section-body">
             <?php
               include '../template/root.php';
+              $limit = 10;
+              $page = isset($_GET['page']) ? (int)$_GET["page"] : 1;
+              $start = ($page > 1) ? ($page * $limit) - $limit : 0;
+              $query = "SELECT * FROM users";
+              $view = $conn->query($query);
+              $total = $view->num_rows;
+              $pages = ceil($total / $limit);
+
               $read_users="SELECT * from users";
-              $view = $conn -> query($read_users);
+              $views = $conn -> query($read_users);
               $no = 1;
               $id = $_SESSION['id'];
             ?>
@@ -56,7 +64,7 @@
                           </thead>
                           <tbody>
                           <?php
-                            while($view_users=$view->fetch_array(MYSQLI_ASSOC)){
+                            while($view_users=$views->fetch_array(MYSQLI_ASSOC)){
                           ?>
                               <tr>
                                 <td><?php echo $no++; ?></td>
@@ -73,7 +81,7 @@
                                   <a href="roleUpdate.php?id=<?php echo $view_users['id_user'] . "&stat=" . $view_users['status']; ?>" class="btn btn-success">Make Admin</a>
                                   <?php }
                                         else{
-                                           if($view_users['id_user'] != $id && $view_users['status'] != 0){
+                                          if($view_users['id_user'] != $id && $view_users['status'] != 0){
                                   ?>
                                   <a href="roleUpdate.php?id=<?php echo $view_users['id_user'] . "&stat=" . $view_users['status']; ?>" class="btn btn-danger">UnAdmin</a>
                                   <?php }
@@ -85,6 +93,15 @@
                           </tbody>
                         </table>
                       </div>
+                      <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <?php
+                            for($i = 1; $i <= $pages; $i++){
+                        ?>
+                        <li class="page-item <?php if($_GET['page'] == $i){ echo "active"; } ?>"><a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                        <?php } ?>
+                    </ul>
+                </nav>
               </div>
             </div>
           </div>
