@@ -28,6 +28,8 @@
         <!-- <img alt="image" src="assets/img/avatar/avatar-1.png" class="rounded-circle mr-1"> -->
         <div class="d-sm-none d-lg-inline-block">Hi, <?php echo $username ?></div></a>
         <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item has-icon" href="/platform_ctf/challenges">Go to Platform</a>
+            <div class="dropdown-divider"></div>
             <a href="<?php echo $logout ?>logout" class="dropdown-item has-icon text-danger">
             <i class="fas fa-sign-out-alt"></i> Logout
             </a>
