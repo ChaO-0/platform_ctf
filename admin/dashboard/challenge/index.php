@@ -36,11 +36,19 @@
           <div class="section-body">
             <?php
                 include '../template/root.php';
+                $limit = 10;
+                $page = isset($_GET['page']) ? (int)$_GET["page"] : 1;
+                $start = ($page > 1) ? ($page * $limit) - $limit : 0;
+                $query = "SELECT * FROM challenges";
+                $view = $conn->query($query);
+                $total = $view->num_rows;
+                $pages = ceil($total / $limit);
+
                 $read_chall="SELECT challenges.id_chall ,challenges.title,challenges.descript,category.id_category, category.category, challenges.flag, challenges.poin 
                               FROM `challenges` 
                               INNER JOIN category ON challenges.id_category =category.id_category ";
-                $view = $conn -> query($read_chall);
-                $no = 1;
+                $views = $conn -> query($read_chall);
+                $no = $start+ 1;
               ?>
               </div>
               <div class="card">
@@ -70,7 +78,7 @@
                       </thead>
                       <tbody>
                       <?php
-                        while($view_chall=$view->fetch_array(MYSQLI_ASSOC)){
+                        while($view_chall=$views->fetch_array(MYSQLI_ASSOC)){
                       ?>
                         
                           <tr>
@@ -93,6 +101,15 @@
                       </tbody>
                     </table>
                   </div>
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <?php
+                            for($i = 1; $i <= $pages; $i++){
+                        ?>
+                        <li class="page-item <?php if($_GET['page'] == $i){ echo "active"; } ?>"><a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                        <?php } ?>
+                    </ul>
+                </nav>
                 </div>
               </div>
 

@@ -36,8 +36,16 @@
           <div class="section-body">
             <?php
                 include '../template/root.php';
+                $limit = 10;
+                $page = isset($_GET['page']) ? (int)$_GET["page"] : 1;
+                $start = ($page > 1) ? ($page * $limit) - $limit : 0;
+                $query = "SELECT * FROM notification";
+                $view = $conn->query($query);
+                $total = $view->num_rows;
+                $pages = ceil($total / $limit);
+
                 $read_notif="SELECT id_notif,title,description,status FROM `notification` ";
-                $view = $conn -> query($read_notif);
+                $views = $conn -> query($read_notif);
                 $no = 1;
               ?>
               </div>
@@ -64,7 +72,7 @@
                       </thead>
                       <tbody>
                       <?php
-                        while($view_notif=$view->fetch_array(MYSQLI_ASSOC)){
+                        while($view_notif=$views->fetch_array(MYSQLI_ASSOC)){
                       ?>
                         
                           <tr>
@@ -83,6 +91,15 @@
                       </tbody>
                     </table>
                   </div>
+                  <nav aria-label="Page navigation example">
+                    <ul class="pagination justify-content-center">
+                        <?php
+                            for($i = 1; $i <= $pages; $i++){
+                        ?>
+                        <li class="page-item <?php if($_GET['page'] == $i){ echo "active"; } ?>"><a class="page-link" href="?page=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+                        <?php } ?>
+                    </ul>
+                </nav>
                 </div>
               </div>
 
